@@ -6,7 +6,6 @@ import java.util.Locale;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,5 +40,12 @@ public class HomeController {
 		
 		return "home";
 	}
-	
+	@RequestMapping(value = "/test/test.do")
+	public void test() {
+		System.out.println("test/test.do test -----");
+	}
+	@RequestMapping(value = "/test/sub.do")
+	public void test2() {
+		System.out.println("/test/sub.do test2 -----");
+	}
 }
