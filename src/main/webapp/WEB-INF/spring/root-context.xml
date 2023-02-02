@@ -6,21 +6,9 @@
 	<!-- Root Context: defines shared resources visible to all other web components -->
 		
 		
-	<!-- Soldier soldier = new Soldier() -->
-	<bean class = "com.home.spring.Gun" id = "gun">
-		
-	</bean>
-	<bean class = "com.home.spring.Soldier" id = "soldier">
-		<!-- soldier.setGun(gun) -->
-		<!-- setter의 이름은 set을 제외하고 첫글자를 소문자로 바꾼것 -->
-		<!-- getter의 이름도 동일하게 바꿈 -->
-		<property name = "gun" ref = "gun"></property>
-		<property name = "age" value = "10"></property>
-		<property name = "name" value = "smith"></property>
-	</bean>
-	<!-- Bullet bullet = new Bullet() -->
-	<bean class = "com.home.spring.Bullet" id = "bullet"></bean>
-	<!-- Gun gun = new Gun() -->
+	
+	
+	
 	
 	
 </beans>

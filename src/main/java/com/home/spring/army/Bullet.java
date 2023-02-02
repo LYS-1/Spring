@@ -1,4 +1,4 @@
-package com.home.spring;
+package com.home.spring.army;
 
 import org.springframework.stereotype.Component;
 
