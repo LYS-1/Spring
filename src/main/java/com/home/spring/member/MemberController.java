@@ -1,44 +1,43 @@
 package com.home.spring.member;
 
-import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
+import java.util.ArrayList;
+
+
 import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+
+import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * Servlet implementation class memberController
  */
-@WebServlet("/memberController")
+@Controller
+@RequestMapping("/member/*")
 public class MemberController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public MemberController() {
-        super();
-        // TODO Auto-generated constructor stub
+    
+	@Autowired
+	private MemberService memberService;
+	
+    @RequestMapping(value = "list")
+	public String getMemberList(ArrayList<MemberDTO> ar, Model model) throws Exception {
+    	ar = memberService.getMemberList();
+    	model.addAttribute("list", ar);
+    	
+    	return "/member/memberList";
     }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/member/member.jsp");
-		view.forward(request, response);
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+	
+    @RequestMapping(value = "join")
+    public String getMemberJoin(MemberDTO memberDTO) throws Exception {
+//    	int result = memberService.addMember(memberDTO);
+//    	System.out.println(result == 1);
+    	
+    	return "/member/memberJoin";
+    }
 
 }

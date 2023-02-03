@@ -3,13 +3,17 @@ package com.home.spring.member;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+
+import org.springframework.stereotype.Repository;
 
 import com.home.spring.util.DBconnection;
 
+@Repository
 public class MemberDAO {
 	
 	//1. 회원 추가
-	public static int addMember(MemberDTO memberDTO) throws Exception{
+	public int addMember(MemberDTO memberDTO) throws Exception{
 		Connection con = DBconnection.getConnection();
 		
 		String sql = "INSERT INTO MEMBER VALUES (?, ?, ?, ?, ?, ?)";
@@ -28,22 +32,33 @@ public class MemberDAO {
 		
 		return result;
 	}
-	public static void main(String[] args) {
-		MemberDTO memberDTO = new MemberDTO();
-		memberDTO.setMember_id("JAVA_TEST_ID1");
-		memberDTO.setMember_pw("JAVA_TEST_PW1");
-		memberDTO.setMember_name("JAVA_TEST_NAME1");
-		memberDTO.setMember_address("JAVA_TEST_ADDRESS1");
-		memberDTO.setMember_phone("JAVA_TEST_PHONE1");
-		memberDTO.setMember_email("JAVA_TEST_EMAIL1");
+	public ArrayList<MemberDTO> getMemberList() throws Exception{
 		
-		int result;
-		try {
-			result = MemberDAO.addMember(memberDTO);
-			System.out.println(result == 1);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		MemberDTO memberDTO = new MemberDTO();
+		
+		ArrayList<MemberDTO> ar = new ArrayList<MemberDTO>();
+		
+		Connection con = DBconnection.getConnection();
+		
+		String sql = "SELECT * FROM MEMBER";
+		
+		PreparedStatement ps = con.prepareStatement(sql);
+		
+		ResultSet rs = ps.executeQuery();
+		
+		while(rs.next()) {
+			memberDTO.setMember_id(rs.getString("MEMBER_ID"));
+			memberDTO.setMember_pw(rs.getString("MEMBER_PW"));
+			memberDTO.setMember_name(rs.getString("MEMBER_NAME"));
+			memberDTO.setMember_address(rs.getString("MEMBER_ADDRESS"));
+			memberDTO.setMember_phone(rs.getString("MEMBER_PHONE"));
+			memberDTO.setMember_email(rs.getString("MEMBER_EMAIL"));
+			
+			ar.add(memberDTO);
 		}
+		
+		DBconnection.disconnection(con, ps, rs);
+		
+		return ar;
 	}
 }
