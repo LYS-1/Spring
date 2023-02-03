@@ -35,6 +35,6 @@ public class ProductDTO {
 		return pro_name;
 	}
 	public void setPro_name(String pro_name) {
-		this.pro_name = pro_name;
+		this.pro_name = pro_name.toUpperCase();
 	}
 }
