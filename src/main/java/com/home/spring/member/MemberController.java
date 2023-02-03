@@ -34,8 +34,8 @@ public class MemberController extends HttpServlet {
 	
     @RequestMapping(value = "join")
     public String getMemberJoin(MemberDTO memberDTO) throws Exception {
-//    	int result = memberService.addMember(memberDTO);
-//    	System.out.println(result == 1);
+    	int result = memberService.addMember(memberDTO);
+    	System.out.println(result == 1);
     	
     	return "/member/memberJoin";
     }
