@@ -9,21 +9,34 @@
 <body>
 	<h1>memberJoin page</h1>
 	
-	<form action="">
+	<form action="./join" method = "post">
 		<table>
 			<tr>
 				<td>ID</td>
+				<td><input type = "text" name = "member_id"></td>
 			</tr>
 			<tr>
-				<td>ID</td>
+				<td>PassWord</td>
+				<td><input type = "password" name = "member_pw"></td>
 			</tr>
 			<tr>
-				<td>ID</td>
+				<td>Name</td>
+				<td><input type = "text" name = "member_name"></td>
 			</tr>
 			<tr>
-				<td>ID</td>
+				<td>Address</td>
+				<td><input type = "text" name = "member_address"></td>
+			</tr>
+			<tr>
+				<td>Phone</td>
+				<td><input type = "text" name = "member_phone"></td>
+			</tr>
+			<tr>
+				<td>Email</td>
+				<td><input type = "text" name = "member_email"></td>
 			</tr>			
 		</table>
+		<button type = "submit">SubmitButton</button>
 	</form>
 </body>
 </html>

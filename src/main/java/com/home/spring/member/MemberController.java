@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * Servlet implementation class memberController
@@ -24,6 +25,8 @@ public class MemberController extends HttpServlet {
 	@Autowired
 	private MemberService memberService;
 	
+	
+	
     @RequestMapping(value = "list")
 	public String getMemberList(ArrayList<MemberDTO> ar, Model model) throws Exception {
     	ar = memberService.getMemberList();
@@ -32,12 +35,17 @@ public class MemberController extends HttpServlet {
     	return "/member/memberList";
     }
 	
-    @RequestMapping(value = "join")
+    @RequestMapping(value = "join", method = RequestMethod.GET)
+    public String getMemberJoin() throws Exception {
+    	return "/member/memberJoin";
+    }
+    
+    @RequestMapping(value = "join", method = RequestMethod.POST)
     public String getMemberJoin(MemberDTO memberDTO) throws Exception {
     	int result = memberService.addMember(memberDTO);
     	System.out.println(result == 1);
     	
-    	return "/member/memberJoin";
+    	return "redirect:./list";
     }
 
 }

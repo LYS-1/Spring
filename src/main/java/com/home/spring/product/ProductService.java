@@ -3,10 +3,12 @@ package com.home.spring.product;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.home.spring.product.option.ProductOptionDAO;
 import com.home.spring.product.option.ProductOptionDTO;
 
-
+@Service
 public class ProductService {
 	//강한 결합도
 	private ProductDAO productDAO;
@@ -25,10 +27,13 @@ public class ProductService {
 		productDTO.setPro_num(productNum);
 		int result = productDAO.addProduct(productDTO);
 		
-		for(ProductOptionDTO productOptionDTO : ar) {
-			productOptionDTO.setOption_num(productNum);
-			result = productOptionDAO.addProductOption(productOptionDTO);
+		if(ar != null) {
+			for(ProductOptionDTO productOptionDTO : ar) {
+				productOptionDTO.setOption_num(productNum);
+				result = productOptionDAO.addProductOption(productOptionDTO);
+			}
 		}
+		
 		return result;
 	}
 	

@@ -34,7 +34,7 @@ public class MemberDAO {
 	}
 	public ArrayList<MemberDTO> getMemberList() throws Exception{
 		
-		MemberDTO memberDTO = new MemberDTO();
+		
 		
 		ArrayList<MemberDTO> ar = new ArrayList<MemberDTO>();
 		
@@ -47,6 +47,7 @@ public class MemberDAO {
 		ResultSet rs = ps.executeQuery();
 		
 		while(rs.next()) {
+			MemberDTO memberDTO = new MemberDTO();
 			memberDTO.setMember_id(rs.getString("MEMBER_ID"));
 			memberDTO.setMember_pw(rs.getString("MEMBER_PW"));
 			memberDTO.setMember_name(rs.getString("MEMBER_NAME"));

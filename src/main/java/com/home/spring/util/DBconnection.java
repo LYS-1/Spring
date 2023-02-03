@@ -13,7 +13,7 @@ public class DBconnection {
 		String user = "USER01";
 		String pw = "USER01";
 		String ip = "192.168.1.114";
-		String url = "jdbc:oracle:thin:@192.168.1.175:1521:xe";
+		String url = "jdbc:oracle:thin:@localhost:1521:xe";
 		String driver = "oracle.jdbc.driver.OracleDriver";
 		
 		//2. driver를 메모리에 로딩

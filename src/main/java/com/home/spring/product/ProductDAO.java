@@ -6,8 +6,11 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import com.home.spring.util.DBconnection;
 
+@Repository
 public class ProductDAO {
 	
 	public int getMax() throws Exception{
@@ -115,35 +118,5 @@ public class ProductDAO {
 		return result;
 	}
 	
-	public static void main(String[] args) {
-		ProductDAO bDAO = new ProductDAO();
-		ProductDTO bDTO = new ProductDTO();
-		bDTO.setPro_num(1);
-		bDTO.setPro_introduce("TEST1");
-		bDTO.setRating(4.8);
-		bDTO.setTag("TEST1");
-		bDTO.setPro_name("TEST1");
-
-		
-		int result;
-		try {
-			result = bDAO.addProduct(bDTO);
-			System.out.println(result == 1);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		try {
-			List<ProductDTO> ar = bDAO.getProduct();
-			
-			System.out.println(ar.size() > 0);
-			
-			
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	}
+	
 }
