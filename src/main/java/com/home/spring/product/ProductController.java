@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -57,9 +58,9 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value = "detail", method = RequestMethod.POST)
-	public String getProductDetail(ProductDTO productDTO) throws Exception{
-		System.out.println(productDTO.getPro_num());
-		int result = productService.setProductDelete(productDTO.getPro_num());
+	public String getProductDetail(@RequestParam(value = "ProductDTO", required = false) ProductDTO productDTO) throws Exception{
+		System.out.println(productDTO.getProductNum() != null);
+		int result = productService.setProductDelete(productDTO.getProductNum());
 		
 		System.out.println(result == 1);
 		return "redirect:./list";

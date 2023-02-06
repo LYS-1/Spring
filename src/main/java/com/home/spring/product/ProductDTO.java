@@ -1,40 +1,35 @@
 package com.home.spring.product;
 
 public class ProductDTO {
-	private Integer pro_num;
-	private String pro_introduce;
-	private Double rating;
-	private String tag;
-	private String pro_name;
+	private Integer productNum;
+	private String productName;
+	private Double productJumsu;
+	private String productDetail;
+	public Integer getProductNum() {
+		return productNum;
+	}
+	public void setProductNum(Integer productNum) {
+		this.productNum = productNum;
+	}
+	public String getProductName() {
+		return productName;
+	}
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+	public Double getProductJumsu() {
+		return productJumsu;
+	}
+	public void setProductJumsu(Double productJumsu) {
+		this.productJumsu = productJumsu;
+	}
+	public String getProductDetail() {
+		return productDetail;
+	}
+	public void setProductDetail(String productDetail) {
+		this.productDetail = productDetail;
+	}
 	
-	public Integer getPro_num() {
-		return pro_num;
-	}
-	public void setPro_num(Integer pro_num) {
-		this.pro_num = pro_num;
-	}
-	public String getPro_introduce() {
-		return pro_introduce;
-	}
-	public void setPro_introduce(String pro_introduce) {
-		this.pro_introduce = pro_introduce;
-	}
-	public Double getRating() {
-		return rating;
-	}
-	public void setRating(Double rating) {
-		this.rating = rating;
-	}
-	public String getTag() {
-		return tag;
-	}
-	public void setTag(String tag) {
-		this.tag = tag;
-	}
-	public String getPro_name() {
-		return pro_name;
-	}
-	public void setPro_name(String pro_name) {
-		this.pro_name = pro_name.toUpperCase();
-	}
+	
+	
 }

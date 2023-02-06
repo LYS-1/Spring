@@ -14,11 +14,11 @@
 			<table>
 				<tr>
 					<td>상품명(Product Name)</td>
-					<td><input type = "text" name = "pro_name"></td>
+					<td><input type = "text" name = "productName"></td>
 				</tr>
 				<tr>
 					<td>상품 설명(Product Introduce)</td>
-					<td><textarea rows = 30 cols = 30 name = "pro_introduce"></textarea></td>
+					<td><textarea rows = 30 cols = 30 name = "productDetail"></textarea></td>
 				</tr>
 			</table>
 			<button type = "submit">SubmitButton</button>

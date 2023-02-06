@@ -21,9 +21,9 @@ public class ProductDAO {
 	private SqlSession sqlSession;
 	private final String NAMESPACE = "com.home.spring.product.ProductDAO.";
 	
-	public int setProductDelete(Integer pro_num) throws Exception{
+	public int setProductDelete(Integer productNum) throws Exception{
 		
-		return sqlSession.delete(NAMESPACE + "setProductDelete", pro_num);
+		return sqlSession.delete(NAMESPACE + "setProductDelete", productNum);
 	}
 		
 	public int getMax() throws Exception{

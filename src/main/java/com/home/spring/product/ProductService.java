@@ -22,7 +22,7 @@ public class ProductService {
 	public int setAddProduct(ProductDTO productDTO,List<ProductOptionDTO> ar) throws Exception{
 		//product테이블에 상품등록 및 옵션 등록
 		int productNum = productDAO.getProductNum().intValue();
-		productDTO.setPro_num(productNum);
+		productDTO.setProductNum(productNum);
 		int result = productDAO.addProduct(productDTO);
 		
 		if(ar != null){

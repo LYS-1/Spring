@@ -14,27 +14,27 @@
 			<table>
 				<tr>
 					<td>ID</td>
-					<td><input type = "text" name = "member_id"></td>
+					<td><input type = "text" name = "id"></td>
 				</tr>
 				<tr>
 					<td>PW</td>
-					<td><input type = "password" name = "member_pw"></td>
+					<td><input type = "password" name = "pw"></td>
 				</tr>
 				<tr>
 					<td>NAME</td>
-					<td><input type = "text" name = "member_name"></td>
+					<td><input type = "text" name = "name"></td>
 				</tr>
 				<tr>
 					<td>ADDRESS</td>
-					<td><input type = "text" name = "member_address"></td>
+					<td><input type = "text" name = "address"></td>
 				</tr>
 				<tr>
 					<td>PHONE</td>
-					<td><input type = "text" name = "member_phone"></td>
+					<td><input type = "text" name = "phone"></td>
 				</tr>
 				<tr>
 					<td>EMAIL</td>
-					<td><input type = "text" name = "member_email"></td>
+					<td><input type = "text" name = "email"></td>
 				</tr>
 			</table>
 			<button type = "submit">SubmitButton</button>

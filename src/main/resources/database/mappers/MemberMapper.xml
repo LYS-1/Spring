@@ -5,8 +5,8 @@
   
  <mapper namespace = "com.home.spring.member.MemberDAO">
  	<insert id="memberJoin" parameterType="MemberDTO">
- 		INSERT INTO MEMBER (MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_ADDRESS ,MEMBER_PHONE, MEMBER_EMAIL) 
- 		VALUES(#{member_id}, #{member_pw}, #{member_name}, #{member_address}, #{member_phone}, #{member_email})
+ 		INSERT INTO MEMBER (ID, PW, NAME, ADDRESS , PHONE, EMAIL) 
+ 		VALUES(#{id}, #{pw}, #{name}, #{address}, #{phone}, #{email})
  	</insert>
  
  </mapper>

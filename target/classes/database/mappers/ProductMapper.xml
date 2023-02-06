@@ -6,24 +6,24 @@
  <mapper namespace = "com.home.spring.product.ProductDAO">
 	
 	<select id = "getProduct" resultType = "ProductDTO">
-		SELECT PRO_NUM, PRO_NAME, RATING 
+		SELECT PRODUCTNUM, PRODUCTNAME, PRODUCTJUMSU 
 		FROM PRODUCT
-		ORDER BY PRO_NUM DESC
+		ORDER BY PRODUCTNUM DESC
 	</select>
 	
 	<select id = "getProductDetail" parameterType = "ProductDTO" resultType = "ProductDTO">
 		SELECT * FROM PRODUCT 
-		WHERE PRO_NUM = #{pro_num}
+		WHERE PRODUCTNUM = #{productNum}
 	</select>
 	
 	<insert id="addProduct" parameterType = "ProductDTO">
-		INSERT INTO PRODUCT (PRO_NUM, PRO_INTRODUCE, RATING, PRO_NAME)
-		VALUES (#{pro_num}, #{pro_introduce}, 0.0, #{pro_name})
+		INSERT INTO PRODUCT (PRODUCTNUM, PRODUCTDETAIL, PRODUCTJUMSU, PRODUCTNAME)
+		VALUES (#{productNum}, #{productDetail}, 0.0, #{productName})
 	</insert>
 	
 	<delete id="setProductDelete" parameterType = "Integer">
 		DELETE PRODUCT 
-		WHERE PRO_NUM = #{pro_num}
+		WHERE PRODUCTNUM = #{productNum}
 	</delete>
 	
  </mapper>

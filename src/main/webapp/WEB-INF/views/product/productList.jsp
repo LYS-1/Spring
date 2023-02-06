@@ -28,8 +28,8 @@
 		<tbody>
 			<c:forEach items = "${productList}" var = "DTO"><!-- DTO는 page영역에 담김(현재 jsp page) -->
 				<tr>
-				<td style = "font-size:15px"><a href = "./detail?pro_num=${pageScope.DTO.pro_num}" >${pageScope.DTO.pro_name}</a></td>
-				<td><h3>${DTO.rating}</h3></td>
+				<td style = "font-size:15px"><a href = "./detail?productNum=${pageScope.DTO.productNum}" >${pageScope.DTO.productName}</a></td>
+				<td><h3>${DTO.productJumsu}</h3></td>
 				</tr>
 			</c:forEach>
 		</tbody>
