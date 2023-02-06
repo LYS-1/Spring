@@ -42,7 +42,9 @@ public class ProductService {
 	public ProductDTO getProductDetail(ProductDTO productDTO) throws Exception{
 		return productDAO.getProductDetail(productDTO);
 	}
-	
+	public int setProductDelete(Integer pro_num) throws Exception{
+		return productDAO.setProductDelete(pro_num);
+	}
 	//약한 결합도
 	public void setProductOptionDAO(ProductOptionDAO productOptionDAO) {
 		this.productOptionDAO = productOptionDAO;

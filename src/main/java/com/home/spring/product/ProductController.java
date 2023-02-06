@@ -22,7 +22,10 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 	
-
+	
+	
+	
+	
 	@RequestMapping(value = "list")
 	public ModelAndView getProductList() throws Exception {
 		
@@ -36,7 +39,7 @@ public class ProductController {
 	}
 	//HttpServletRequest request, HttpServletResponse response
 	//Integer num, @RequestParam(value = "n") String name, @RequestParam(value = "a", defaultValue = "1", required = false) int age
-	@RequestMapping(value = "detail")
+	@RequestMapping(value = "detail", method = RequestMethod.GET)
 	public String getProductDetail(ProductDTO productDTO, Model model) throws Exception {
 		//파라미터 이름이 setter의 이름과 같아야함 dto변수명 = 테이블의 컬럼명 = 파라미터 값
 		System.out.println("productDetail");
@@ -51,6 +54,15 @@ public class ProductController {
 		
 		System.out.println(productDTO != null);
 		return "/product/productDetail";
+	}
+	
+	@RequestMapping(value = "detail", method = RequestMethod.POST)
+	public String getProductDetail(ProductDTO productDTO) throws Exception{
+		System.out.println(productDTO.getPro_num());
+		int result = productService.setProductDelete(productDTO.getPro_num());
+		
+		System.out.println(result == 1);
+		return "redirect:./list";
 	}
 	
 	@RequestMapping(value = "productAdd", method = RequestMethod.GET)

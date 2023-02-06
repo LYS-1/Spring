@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>Member Page</h1>
+	<h1>Member List Page</h1>
+	<a href = "./memberJoin"><button type = "button">회원 가입</button></a>
 </body>
 </html>

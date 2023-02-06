@@ -5,6 +5,7 @@ package com.home.spring.member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -14,18 +15,16 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
-	@RequestMapping(value = "memberJoin")
-	public String getMemberJoin() throws Exception {
-		MemberDTO memberDTO = new MemberDTO();
-		memberDTO.setMember_id("test");
-		memberDTO.setMember_pw("test");
-		memberDTO.setMember_name("test");
-		memberDTO.setMember_address("test");
-		memberDTO.setMember_phone("test");
-		memberDTO.setMember_email("test");
+	@RequestMapping(value = "memberJoin", method = RequestMethod.GET)
+	public void getMemberJoin() {
+		
+	}
+	
+	@RequestMapping(value = "memberJoin", method = RequestMethod.POST)
+	public String getMemberJoin(MemberDTO memberDTO) throws Exception {
 		int result = memberService.memberJoin(memberDTO);
 		System.out.println(result > 0);
-		return "/member/memberJoin";
+		return "redirect:./memberPage";
 	}
 	
 	@RequestMapping(value = "memberLogin")

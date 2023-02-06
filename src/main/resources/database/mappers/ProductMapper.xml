@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+ <mapper namespace = "com.home.spring.product.ProductDAO">
+	
+	<select id = "getProduct" resultType = "ProductDTO">
+		SELECT PRO_NUM, PRO_NAME, RATING 
+		FROM PRODUCT
+		ORDER BY PRO_NUM DESC
+	</select>
+	
+	<select id = "getProductDetail" parameterType = "ProductDTO" resultType = "ProductDTO">
+		SELECT * FROM PRODUCT 
+		WHERE PRO_NUM = #{pro_num}
+	</select>
+	
+	<insert id="addProduct" parameterType = "ProductDTO">
+		INSERT INTO PRODUCT (PRO_NUM, PRO_INTRODUCE, RATING, PRO_NAME)
+		VALUES (#{pro_num}, #{pro_introduce}, 0.0, #{pro_name})
+	</insert>
+	
+	<delete id="setProductDelete" parameterType = "Integer">
+		DELETE PRODUCT 
+		WHERE PRO_NUM = #{pro_num}
+	</delete>
+	
+ </mapper>

@@ -6,6 +6,10 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.sql.DataSource;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.company.home.util.DBconnection;
@@ -13,6 +17,15 @@ import com.company.home.util.DBconnection;
 @Repository
 public class ProductDAO {
 	
+	@Autowired
+	private SqlSession sqlSession;
+	private final String NAMESPACE = "com.home.spring.product.ProductDAO.";
+	
+	public int setProductDelete(Integer pro_num) throws Exception{
+		
+		return sqlSession.delete(NAMESPACE + "setProductDelete", pro_num);
+	}
+		
 	public int getMax() throws Exception{
 		Connection con = DBconnection.getConnection();
 		String sql = "SELECT MAX(PRO_NUM) FROM PRODUCT";
@@ -26,6 +39,7 @@ public class ProductDAO {
 		}
 		return result;
 	}
+	
 	public Long getProductNum()throws Exception{
 		
 		Connection con = DBconnection.getConnection();
@@ -47,78 +61,18 @@ public class ProductDAO {
 	}
 	
 	public ProductDTO getProductDetail(ProductDTO productDTO) throws Exception{
-		
-		Connection con = DBconnection.getConnection();
-		
-		String sql = "SELECT * FROM PRODUCT WHERE PRO_NUM = ?";
-		
-		PreparedStatement ps = con.prepareStatement(sql);
-		
-		ps.setInt(1, productDTO.getPro_num());
-		
-		ResultSet rs = ps.executeQuery();
-		
-		if(rs.next()) {
-			productDTO = new ProductDTO();
-			productDTO.setPro_num(rs.getInt("PRO_NUM"));
-			productDTO.setPro_introduce(rs.getString("PRO_INTRODUCE"));
-			productDTO.setRating(rs.getDouble("RATING"));
-			productDTO.setTag(rs.getString("TAG"));
-			productDTO.setPro_name(rs.getString("PRO_NAME"));
-		}
-		else {
-			productDTO = null;
-		}
-		
-		return productDTO;
-		
+
+		return sqlSession.selectOne(NAMESPACE + "getProductDetail", productDTO);
 	}
+	
 	public List<ProductDTO> getProduct() throws Exception{
-		ArrayList<ProductDTO> arDTO = new ArrayList<ProductDTO>();
 		
-		Connection con = DBconnection.getConnection();
-		
-		String sql = "SELECT PRO_NUM, PRO_NAME, RATING"
-				+ " FROM PRODUCT ORDER BY PRO_NUM ASC";
-		
-		PreparedStatement ps = con.prepareStatement(sql);
-		
-		ResultSet rs = ps.executeQuery();
-		
-		while(rs.next()) {
-			ProductDTO productDTO = new ProductDTO();
-			productDTO.setPro_num(rs.getInt("PRO_NUM"));
-			productDTO.setPro_name(rs.getString("PRO_NAME"));
-			productDTO.setRating(rs.getDouble("RATING"));
-			
-			arDTO.add(productDTO);
-		}
-		
-		DBconnection.disconnection(con, ps, rs);
-		
-		return arDTO;
+		return sqlSession.selectList(NAMESPACE + "getProduct");
 	}
 	
 	public int addProduct(ProductDTO productDTO) throws Exception{
 		
-		Connection con = DBconnection.getConnection();
-		
-		String sql = "INSERT INTO PRODUCT VALUES (?, ?, ?, ?, ?)";
-		
-		PreparedStatement ps = con.prepareStatement(sql);
-		ps.setInt(1, productDTO.getPro_num());
-		ps.setString(2, productDTO.getPro_introduce());
-		if(productDTO.getRating() != null) {
-		ps.setDouble(3, productDTO.getRating());}
-		else {
-			ps.setDouble(3, 0);
-		}
-		ps.setString(4, productDTO.getTag());
-		ps.setString(5, productDTO.getPro_name());
-
-		int result = ps.executeUpdate();
-		
-		return result;
+		return sqlSession.insert(NAMESPACE + "addProduct", productDTO);
 	}
 	
 

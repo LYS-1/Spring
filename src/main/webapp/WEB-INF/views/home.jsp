@@ -9,5 +9,6 @@
 	Hello world!  
 	</h1>
 	<a href = "/product/list"> Product List </a>
+	<a href = "/member/memberPage">Member List</a>
 </body>
 </html>
