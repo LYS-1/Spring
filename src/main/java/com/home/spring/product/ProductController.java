@@ -57,7 +57,7 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value = "detail", method = RequestMethod.POST)
-	public String getProductDetail(ProductDTO productDTO) throws Exception{
+	public String getProductDetail(@RequestParam(value = "productDTO") ProductDTO productDTO) throws Exception{
 		System.out.println(productDTO.getPro_num());
 		int result = productService.setProductDelete(productDTO.getPro_num());
 		
