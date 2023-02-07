@@ -16,7 +16,7 @@
 		WHERE PRODUCTNUM = #{productNum}
 	</select>
 	
-	<insert id="addProduct" parameterType = "ProductDTO">
+	<insert id="setProductAdd" parameterType = "ProductDTO">
 		INSERT INTO PRODUCT (PRODUCTNUM, PRODUCTDETAIL, PRODUCTJUMSU, PRODUCTNAME)
 		VALUES (#{productNum}, #{productDetail}, 0.0, #{productName})
 	</insert>
@@ -25,5 +25,9 @@
 		DELETE PRODUCT 
 		WHERE PRODUCTNUM = #{productNum}
 	</delete>
+	
+	<select id="getProductNum" resultType = "Long">
+		SELECT PRODUCT_SEQ.NEXTVAL FROM DUAL
+	</select>
 	
  </mapper>

@@ -16,7 +16,7 @@ public class MemberDAO {
 	private SqlSession sqlSession;
 	private final String NAMESPACE = "com.home.spring.member.MemberDAO.";
 	
-	public int memberJoin(MemberDTO memberDTO) throws Exception {
+	public int setMemberJoin(MemberDTO memberDTO) throws Exception {
 		
 		return sqlSession.insert(NAMESPACE + "memberJoin", memberDTO);
 	}

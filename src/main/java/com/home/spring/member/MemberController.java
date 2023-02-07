@@ -15,14 +15,21 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
+	@RequestMapping(value = "memberPage")
+	public ModelAndView getMemberPage() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("/member/memberPage");
+		return mv;
+	}
+	
 	@RequestMapping(value = "memberJoin", method = RequestMethod.GET)
-	public void getMemberJoin() {
+	public void setMemberJoin() {
 		
 	}
 	
 	@RequestMapping(value = "memberJoin", method = RequestMethod.POST)
-	public String getMemberJoin(MemberDTO memberDTO) throws Exception {
-		int result = memberService.memberJoin(memberDTO);
+	public String setMemberJoin(MemberDTO memberDTO) throws Exception {
+		int result = memberService.setMemberJoin(memberDTO);
 		System.out.println(result > 0);
 		return "redirect:./memberPage";
 	}
@@ -31,10 +38,5 @@ public class MemberController {
 	public void getMemberLogin() {
 		
 	}
-	@RequestMapping(value = "memberPage")
-	public ModelAndView getMemberPage() {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("/member/memberPage");
-		return mv;
-	}
+	
 }

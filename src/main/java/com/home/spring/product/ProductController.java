@@ -58,7 +58,7 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value = "detail", method = RequestMethod.POST)
-	public String getProductDetail(@RequestParam(value = "ProductDTO", required = false) ProductDTO productDTO) throws Exception{
+	public String getProductDetail(ProductDTO productDTO) throws Exception{
 		System.out.println(productDTO.getProductNum() != null);
 		int result = productService.setProductDelete(productDTO.getProductNum());
 		
@@ -67,13 +67,13 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value = "productAdd", method = RequestMethod.GET)
-	public void getProductAdd() {
+	public void setProductAdd() {
 		//페이지로 이동하는 메서드
 	}
 	@RequestMapping(value = "productAdd", method = RequestMethod.POST)
-	public String getProductAdd(ProductDTO productDTO) throws Exception{
+	public String setProductAdd(ProductDTO productDTO) throws Exception{
 		//페이지에서 값 받아오는 메서드
-		int result = productService.setAddProduct(productDTO, null);
+		int result = productService.setProductAdd(productDTO, null);
 		System.out.println(result == 1);
 		return "redirect:./list";
 	}

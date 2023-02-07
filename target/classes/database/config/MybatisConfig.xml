@@ -10,8 +10,11 @@
   		
   		<typeAlias type="java.lang.Integer" alias="Integer"/>
   		
+  		<typeAlias type="java.lang.Long" alias="Long"/>
+  		
   		<typeAlias type="com.home.spring.member.MemberDTO" alias="MemberDTO"/>
   		
+  		<typeAlias type="com.home.spring.bankbook.BankBookDTO" alias="BankBookDTO"/>
   		<!-- 없는 파일 미리 만들기 X -->
   	</typeAliases>
   	
