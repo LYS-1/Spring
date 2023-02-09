@@ -14,15 +14,15 @@
  	</select>
  	<insert id="setBankBookInsert" parameterType="BankBookDTO">
  		INSERT INTO BANKBOOK 
- 		VALUES (#{bookNumber}, #{bookName}, #{bookRate}, #{bookSale}, #{bookDetail})
+ 		VALUES (BANKBOOK_SEQ.NEXTVAL, #{bookName}, #{bookRate}, #{bookSale}, #{bookDetail})
  	</insert>
- 	<delete id="setBankBookDelete">
+ 	<delete id="setBankBookDelete" parameterType = "BankBookDTO">
  		DELETE BANKBOOK 
  		WHERE BOOKNUMBER = #{bookNumber}
  	</delete>
  	<update id="setBankBookUpdate" parameterType = "BankBookDTO">
  		UPDATE BANKBOOK 
- 		SET BOOKNUMBER = #{bookNumber}, BOOKNAME = #{bookName}, BOOKRATE = #{bookRate}, BOOKSALE = #{bookSale}, BOOKDETAIL = #{bookDetail}
+ 		SET BOOKNAME = #{bookName}, BOOKRATE = #{bookRate}, BOOKSALE = #{bookSale}, BOOKDETAIL = #{bookDetail}
  		WHERE BOOKNUMBER = #{bookNumber}
  	</update>
  </mapper>

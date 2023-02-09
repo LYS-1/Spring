@@ -11,8 +11,8 @@ public class BankBookDTO {
 	public Long getBookNumber() {
 		return bookNumber;
 	}
-	public void setBookNumber(Long bookNumber) {
-		this.bookNumber = bookNumber;
+	public void setBookNumber(Long bookNum) {
+		this.bookNumber = bookNum;
 	}
 	public String getBookName() {
 		return bookName;

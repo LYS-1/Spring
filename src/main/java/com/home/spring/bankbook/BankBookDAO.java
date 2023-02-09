@@ -15,6 +15,7 @@ public class BankBookDAO {
 	
 	private final String NAMESPACE = "com.home.spring.bankbook.BankBookDAO.";
 	
+	
 	public List<BankBookDTO> getBankBookList() throws Exception{
 		return sqlSession.selectList(NAMESPACE + "getBankBookList");
 	}
