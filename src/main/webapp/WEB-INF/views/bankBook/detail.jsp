@@ -15,7 +15,7 @@
 			<h1>없는 제품입니다.</h1>
 		</c:when>
 		<c:when test="${dto.bookNumber != null}">
-
+			<hr>
 			<h1>BankBook Product Detail Page</h1>
 			<hr>
 			<h3>${dto.bookNumber}. ${dto.bookName}</h3>
