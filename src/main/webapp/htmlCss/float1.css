@@ -1,0 +1,33 @@
+.wrap{
+    width: 525px;
+    height: 100px;
+    border: black 1px solid;
+    
+}
+
+.c1{
+    width: 100px;
+    height: 100px;
+    /* display: inline-block; */
+}
+
+.bg1{
+    background-color: rebeccapurple;
+    float: left;
+}
+
+.bg2{
+    background-color: yellowgreen;
+    float: left;
+    margin-left: 112.5px;
+}
+
+.bg3{
+    background-color: blueviolet;
+    float: right;
+}
+.bg4{
+    background-color: black;
+    clear: both;
+    margin-top: 150px;
+}

@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+<link rel="stylesheet" href="../resources/css/table.css">
 </head>
 <body>
 	
@@ -17,33 +17,34 @@
 	<img alt="image" src="../resources/images/imageTest.jpg" />
 	
 	<div class = "col-6">
-	<table class = "table table-hover">
-		<thead>
-			<tr>
-				<th> 상품명 </th>
-				<th> 이자율 </th>
-				<th> 판매여부 </th>
-
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach items="${list}" var="dto">
+		<table class = "tb2">
+			<thead>
 				<tr>
-					<td><a href = "./detail?bookNumber=${dto.bookNumber}"> ${dto.bookName} </a></td>
-					<td> ${dto.bookRate} </td>
-					<c:choose>
-						<c:when test="${dto.bookSale == 1}"><td>판매중</td></c:when>
-						<c:when test="${dto.bookSale == 0}"><td>판매 종료</td></c:when>
-					</c:choose>
+					<th> 상품명 </th>
+					<th> 이자율 </th>
+					<th> 판매여부 </th>
+
 				</tr>
-			</c:forEach>			
-			
-			
-		</tbody>
-	</table>
-	</div>	
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>	
+			</thead>
+			<tbody>
+				<c:forEach items="${list}" var="dto">
+					<tr>
+						<td><a href = "./detail?bookNumber=${dto.bookNumber}"> ${dto.bookName} </a></td>
+						<td class="cen_td"> ${dto.bookRate} </td>
+						<td class="cen_td">
+						<c:choose>
+							<c:when test="${dto.bookSale == 1}">판매중</c:when>
+							<c:when test="${dto.bookSale == 0}">판매 종료</c:when>
+						</c:choose>
+						</td>
+					</tr>
+				</c:forEach>			
+			</tbody>
+		</table>
+
+	
 	<hr>
 	<a href = "./insert">상품 추가</a>
 </body>
 </html>
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>	 -->

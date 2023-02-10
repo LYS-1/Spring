@@ -5,18 +5,35 @@
 <html>
 <head>
 	<title>Home</title>
+	<link rel="stylesheet" href="../resources/css/main.css">
+	<link rel="stylesheet" href="../resources/css/reset.css">
 </head>
 <body>
-	<h1>
-		Main Page  
-	</h1>
-	<a href = "/product/list"> Product List </a><br>
-	<a href = "/member/memberPage"> Member List </a><br>
-	<a href = "/bankBook/list"> BankBookProduct List </a><br>
 	
-	<img alt="image1" src="/resources/images/imageTest2.jpg" style="width:700px; height:700px;">
-	<img alt="image2" src="./resources/images/imageTest.jpg" style="width:700px; height:700px;">
-	<iframe width="560" height="315" src="https://www.youtube.com/embed/2MkS9Kha6lk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-	<P>${serverTime}</P>
+	<header>
+		<div class="header_wrap">
+			<div class = "header_logo">
+				<img src="/resources/images/logo.png" alt="img">
+			</div>
+			<nav class = "header_nav">
+				<ul>
+					<li><a href="#">공지</a></li>
+					<li><a href="#">제품</a></li>
+					<li><a href="#">저축 상품</a></li>
+					<li><a href="#">기타 메뉴</a></li>
+				</ul>
+			</nav>
+			<div class = "header_sub">
+				<ul>
+					<li><a href="#">LOGIN</a></li>
+					<li><a href="#">JOIN</a></li>
+					<li><a href="#">KO</a></li>
+					<li><a href="#">EN</a></li>
+					<li><a href="#">JP</a></li>
+					<li><a href="#">CN</a></li>
+				</ul>
+			</div>
+		</div>
+	</header>
 </body>
 </html>

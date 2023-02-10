@@ -1,0 +1,96 @@
+.tb1{
+    width: 70%;
+    margin: 0 auto;
+    border: 1px solid black;
+    border-spacing: 0px;
+    border-collapse: collapse;
+}
+
+.tb1 th, .tb1 td{
+    border: 1px solid black;
+    height: 30px;
+}
+
+.tb1 > thead > tr{
+    background-color: black;
+    color: white;
+}
+
+.tb1 > tbody td > a{
+    text-decoration: none;
+    color: black;
+}
+
+.title{
+    width:30%;
+    margin: 0 auto;
+}
+
+.image{
+    width: 50%;
+    margin: 0 auto;
+}   
+
+.tb1_td{
+    text-align: center; 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* tb2 */
+
+.tb2{
+    width: 70%;
+    margin: 0 auto;
+    
+    border-spacing: 0px;
+    border-collapse: collapse;
+}
+.tb2 th, .tb2 td{
+    height: 30px;
+    border-right: 3px solid white;
+}
+.tb2 > thead > tr{
+    background-color: black;
+    color: white;
+}
+
+.tb2 > tbody td > a{
+    color: black;
+    text-decoration: none;
+}
+
+.tb2_td{
+    text-align: center;
+    border: 1px solid black;
+}
+
+.tb2 > tbody > tr{
+    border-bottom: 1px solid black;
+}
+
+.cen_td{
+    text-align: center;
+}
+
+
+
+/* 백그 블랙
+border 흰
+글자 흰
+언더라인 검정
+밖의 라인은 없음 */
