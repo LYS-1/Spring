@@ -51,7 +51,7 @@ public class BankBookController {
 	public ModelAndView setBankBookInsert(BankBookDTO bankBookDTO) throws Exception {
 		ModelAndView mv = new ModelAndView();
 
-//		int result = bankBookService.setBankBookInsert(bankBookDTO);
+		int result = bankBookService.setBankBookInsert(bankBookDTO);
 		
 		mv.setViewName("redirect:./list");
 		

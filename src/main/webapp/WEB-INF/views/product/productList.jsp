@@ -14,26 +14,31 @@
 </head>
 <body>
 	<c:import url="../template/header.jsp"></c:import>
-	<h1 class="title">ProductList Page</h1>
-	<div>
-	<table class = "tb2">
-		<thead>
-			<tr>
-				<th> 상품명 </th><th> 평점 </th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach items = "${productList}" var = "DTO"><!-- DTO는 page영역에 담김(현재 jsp page) -->
-				<tr>
-				<td><a href = "./detail?productNum=${pageScope.DTO.productNum}" >${pageScope.DTO.productName}</a></td>
-				<td><h3>${DTO.productJumsu}</h3></td>
-				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
-	<a href = "./productAdd"><button class ="submitBTN"> 상품 등록 </button></a>
-	</div>	
-	
-	<hr>	
+	<div class="container-fluid">
+		<div class="row my-4 ">
+			<h1 class="col-md-7 mx-auto text-center border-bottom border-dark pb-4">ProductList Page</h1>
+		</div>
+		<div class = "row col-md-7 mx-auto">
+			<table class = "table table-hover">
+				<thead>
+					<tr>
+						<th> 상품명 </th><th> 평점 </th>
+					</tr>
+				</thead>
+				<tbody class="table-group-divider">
+					<c:forEach items = "${productList}" var = "DTO"><!-- DTO는 page영역에 담김(현재 jsp page) -->
+						<tr>
+						<td><a href = "./detail?productNum=${pageScope.DTO.productNum}" >${pageScope.DTO.productName}</a></td>
+						<td><h3>${DTO.productJumsu}</h3></td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>	
+		</div>	
+		<div class="row col-md-7 mx-auto">
+			<a href = "./productAdd"><button class ="btn btn-primary "> 상품 등록 </button></a>
+		</div>
+	</div>
+	<c:import url="../template/common_js.jsp"></c:import>
 </body>
 </html>

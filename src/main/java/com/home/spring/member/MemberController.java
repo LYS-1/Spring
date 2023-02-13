@@ -29,9 +29,9 @@ public class MemberController {
 	
 	@RequestMapping(value = "memberJoin", method = RequestMethod.POST)
 	public String setMemberJoin(MemberDTO memberDTO) throws Exception {
-		int result = memberService.setMemberJoin(memberDTO);
-		System.out.println(result > 0);
-		return "redirect:./memberPage";
+		//int result = memberService.setMemberJoin(memberDTO);
+		//System.out.println(result > 0);
+		return "redirect:/";
 	}
 	
 	@RequestMapping(value = "memberLogin")
