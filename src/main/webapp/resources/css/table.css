@@ -87,6 +87,10 @@
     text-align: center;
 }
 
+.img_cen{
+    margin: 0 auto;
+    display: block;
+}
 
 
 /* 백그 블랙

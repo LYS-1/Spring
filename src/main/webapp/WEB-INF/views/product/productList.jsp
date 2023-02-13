@@ -6,16 +6,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="../resources/css/table.css">
-<link rel="stylesheet" href="../resources/css/buttons.css">
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<c:import url="../template/common_css.jsp"></c:import>
+	<link rel="stylesheet" href="../resources/css/table.css">
+	<link rel="stylesheet" href="../resources/css/buttons.css">
 </head>
 <body>
-	<hr>
-	<h1>Product List Page</h1>		
-	<hr>
-	
+	<c:import url="../template/header.jsp"></c:import>
+	<h1 class="title">ProductList Page</h1>
 	<div>
 	<table class = "tb2">
 		<thead>
@@ -32,7 +31,7 @@
 			</c:forEach>
 		</tbody>
 	</table>
-	<button class ="submitBTN"><a href = "./productAdd"> 상품 등록 </a></button>
+	<a href = "./productAdd"><button class ="submitBTN"> 상품 등록 </button></a>
 	</div>	
 	
 	<hr>	
