@@ -9,39 +9,35 @@
 <c:import url="../template/common_css.jsp"></c:import>
 </head>
 <body>
-	<c:import url="../template/header.jsp"></c:import>	
+<c:import url="../template/header.jsp"></c:import>	
 	<div class="container-fluid">
-		<form class="col-md-7 mx-auto mt-4">
+		<form class="col-md-7 mx-auto mt-4" action="./memberUpdate" method="post">
 
-		  <h1 class="text-center">My Page</h1>
+		  <h1 class="text-center">정보 수정</h1>
 
 		  <!-- Text input -->
 		  
-		  <div class="form-outline mb-4">
-		    <label class="form-label" for="id">ID</label>
-		    <input type="text" name="id" id="id" class="form-control" value="${member.id}" readonly/>
-		  </div>
-		 
+		  
 		  <!-- Email input -->
 		  <div class="form-outline mb-4">
 		  	<label class="form-label" for="name">Name</label>
-		    <input type="text" name="name" id="name" class="form-control" value="${member.name}" readonly/>
+		    <input type="text" name="name" id="name" class="form-control" value="${member.name}" />
 		  </div>
 		  <!-- Number input -->
 		  <div class="form-outline mb-4">
 		    <label class="form-label" for="Phone">Phone</label>
-		    <input type="text" name="phone" id="Phone" class="form-control" value="${member.phone}" readonly/>  
+		    <input type="text" name="phone" id="Phone" class="form-control" value="${member.phone}" />  
 		  </div>
 		  <div class="form-outline mb-4">
 		    <label class="form-label" for="Email">Email</label>
-		    <input type="text" name="email" id="Email" class="form-control" value="${member.email}" readonly/>
+		    <input type="text" name="email" id="Email" class="form-control" value="${member.email}" />
 		  </div>
 		  <div class="form-outline mb-4">
 		    <label class="form-label" for="Address">Address</label>
-		    <input type="text" name="address" id="Address" class="form-control" value="${member.address}" readonly/> 
+		    <input type="text" name="address" id="Address" class="form-control" value="${member.address}" /> 
 		  </div>
 		  <!-- Submit button -->
-		  <a href="./memberUpdate"><button type="button" class="btn btn-primary btn-block mb-4 float-end">정보 수정</button></a>
+		  <button type="submit" class="btn btn-primary btn-block mb-4 float-end">수정하기</button>
 		</form>
 	</div>
 	<c:import url="../template/common_js.jsp"></c:import>

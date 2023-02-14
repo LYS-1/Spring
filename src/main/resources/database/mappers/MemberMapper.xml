@@ -9,9 +9,24 @@
  		VALUES(#{id}, #{pw}, #{name}, #{address}, #{phone}, #{email})
  	</insert>
  	
- 	<insert id="" parameterType="MemberDTO">
+ 	<insert id="memberRoleAdd" parameterType="MemberDTO">
  		INSERT INTO MEMBER_ROLE(ID, ROLENUM)
  		VALUES(#{id}, (SELECT ROLENUM FROM ROLE WHERE ROLENAME='MEMBER'))
  	</insert>
+ 	
+ 	<select id="memberLogin" parameterType="MemberDTO" resultType="MemberDTO">
+ 		SELECT * FROM MEMBER WHERE ID = #{id} AND PW = #{pw}
+ 	</select>
+ 	
+ 	<update id="memberUpdate" parameterType="MemberDTO">
+ 		UPDATE MEMBER
+ 		SET NAME = #{name}, PHONE = #{phone}, EMAIL = #{email}, ADDRESS = #{address} 
+ 		WHERE ID = #{id}
+ 	</update>
+ 	
+ 	<select id="memberDetail" parameterType="MemberDTO" resultType="MemberDTO">
+ 		SELECT * FROM MEMBER WHERE ID = #{id}
+ 	</select>
+ 	
  	
  </mapper>

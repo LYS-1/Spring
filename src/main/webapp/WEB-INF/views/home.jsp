@@ -47,7 +47,7 @@
 			      <img src="/resources/images/test2.jpg" class="d-block w-100" alt="...">
 			    </div>
 			    <div class="carousel-item">
-			      <img src="/resources/images/test3.jpg" class="d-block w-100" alt="...">
+			      <img src="/resources/images/testimg2.jpg" class="d-block w-100" alt="...">
 			    </div>
 			  </div>
 			  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
@@ -61,7 +61,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 	
 	<c:import url="./template/common_js.jsp"></c:import>
 </body>

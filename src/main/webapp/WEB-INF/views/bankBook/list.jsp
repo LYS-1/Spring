@@ -24,10 +24,9 @@
 						<th> 상품명 </th>
 						<th> 이자율 </th>
 						<th> 판매여부 </th>
-	
 					</tr>
 				</thead>
-				<tbody class="table-group-divider">
+				<tbody class="table-group-divider mb-1">
 					<c:forEach items="${list}" var="dto">
 						<tr>
 							<td><a href = "./detail?bookNumber=${dto.bookNumber}"> ${dto.bookName} </a></td>
@@ -42,10 +41,11 @@
 					</c:forEach>			
 				</tbody>
 			</table>
+			<div class="px-0">
+				<a href = "./insert"><button type="button" class="btn btn-primary float-end">상품 추가</button></a>
+			</div>
 		</div>
-		<div class="row col-md-7 mx-auto">
-			<a href = "./insert"><button type="button" class="btn btn-primary">상품 추가</button></a>
-		</div>
+		
 	</div>
 	<c:import url="../template/common_js.jsp"></c:import>
 </body>
