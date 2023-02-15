@@ -14,10 +14,10 @@
 	<c:import url="../template/header.jsp"></c:import>
 	
 	<div class="container-fluid">
-		<div class="row my-4 ">
+		<div class="my-4 ">
 			<h1 class="col-md-7 mx-auto text-center border-bottom border-dark pb-4">BankBookList Page</h1>
 		</div>	
-		<div class = "row col-md-7 mx-auto">
+		<div class = "col-md-7 mx-auto">
 			<table class="table table-hover">
 				<thead>
 					<tr>
@@ -41,6 +41,45 @@
 					</c:forEach>			
 				</tbody>
 			</table>
+			<div class="row">
+				<nav aria-label="Page navigation example">
+				  <ul class="pagination">
+				  	<c:if test="${pager.startNum != 1}">
+				    	<li class="page-item">
+				      		<a class="page-link" href="./list?page=1" aria-label="Previous">
+				        		<span aria-hidden="true">&laquo;</span>
+				      		</a>
+				    	</li>
+				    </c:if>
+				    <c:if test="${pager.startNum != 1}">
+				    	<li class="page-item">
+				      		<a class="page-link" href="./list?page=1" aria-label="Previous">
+				        		<span aria-hidden="true">&lsaquo;</span>
+				      		</a>
+				    	</li>
+				    </c:if>
+				    
+				    <c:forEach begin="${pager.startNum}" end="${pager.endNum}" var="i">
+					    <li class="page-item"><a class="page-link" href="./list?page=${i}">${i}</a></li>
+					</c:forEach> 
+				    
+				    <c:if test="${pager.after == false }">
+				    	<li class="page-item">
+				      		<a class="page-link" href="./list?page=${pager.endNum + 1}" aria-label="Next">
+				        		<span aria-hidden="true">&rsaquo;</span>
+				      		</a>
+				    	</li>
+				    </c:if>
+				    <c:if test="${pager.after == false }">
+				    	<li class="page-item">
+				      		<a class="page-link" href="./list?page=${pager.totalPage}" aria-label="Next">
+				        		<span aria-hidden="true">&raquo;</span>
+				      		</a>
+				    	</li>
+				    </c:if>
+				  </ul>
+				</nav>
+			</div>
 			<div class="px-0">
 				<a href = "./insert"><button type="button" class="btn btn-primary float-end">상품 추가</button></a>
 			</div>

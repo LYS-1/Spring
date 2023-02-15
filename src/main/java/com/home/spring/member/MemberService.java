@@ -16,8 +16,18 @@ public class MemberService {
 	}
 	
 	public MemberDTO getMemberLogin(MemberDTO memberDTO) throws Exception{
-		memberDTO = memberDAO.getMemberLogin(memberDTO);
-		return memberDTO;
+		MemberDTO result = memberDAO.getMemberLogin(memberDTO);
+		if(result != null && memberDTO.getPw().equals(result.getPw())) {
+			memberDTO.setPw(null);
+			return memberDTO;
+		}
+		else {
+			return null;
+		}
+	}
+	
+	public MemberDTO getMemberPage(MemberDTO memberDTO)throws Exception{
+		return memberDAO.getMemberLogin(memberDTO);
 	}
 	
 	public int setMemberUpdate(MemberDTO memberDTO) throws Exception{

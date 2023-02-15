@@ -12,6 +12,10 @@
   		
   		<typeAlias type="java.lang.Long" alias="Long"/>
   		
+  		<typeAlias type="com.company.home.util.Pager" alias="Pager"/>
+  		
+  		<typeAlias type="com.company.home.util.Pagination" alias="Pagination"/>
+  		
   		<typeAlias type="com.home.spring.member.RoleDTO" alias="RoleDTO" />
   		
   		<typeAlias type="com.home.spring.member.MemberDTO" alias="MemberDTO"/>

@@ -4,9 +4,16 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
  <mapper namespace = "com.home.spring.bankbook.BankBookDAO">
- 	<select id="getBankBookList" parameterType="BankBookDTO" resultType="BankBookDTO">
- 		SELECT * 
- 		FROM BANKBOOK
+ 	<select id="getBankBookList" parameterType="Pagination" resultType="BankBookDTO">
+ 		SELECT * FROM 
+		(
+			SELECT ROWNUM R, B.* FROM
+				(
+					SELECT * FROM BANKBOOK
+					ORDER BY BOOKNUMBER DESC
+				) B
+		) 
+		WHERE R BETWEEN #{startRow} AND #{endRow}
  	</select>
  	<select id="getBankBookDetail" parameterType="BankBookDTO" resultType="BankBookDTO">
  		SELECT * FROM BANKBOOK 
@@ -25,4 +32,8 @@
  		SET BOOKNAME = #{bookName}, BOOKRATE = #{bookRate}, BOOKSALE = #{bookSale}, BOOKDETAIL = #{bookDetail}
  		WHERE BOOKNUMBER = #{bookNumber}
  	</update>
+ 	<select id="getBankBookCount" resultType="Long">
+ 		SELECT COUNT(BOOKNUMBER) FROM BANKBOOK
+ 	</select>
+ 	
  </mapper>

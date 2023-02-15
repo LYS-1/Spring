@@ -23,15 +23,21 @@ public class MemberController {
 	public ModelAndView getMemberPage(HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
-		memberDTO = memberService.getMemberDetail(memberDTO);
+		
+		memberDTO = memberService.getMemberPage(memberDTO);
+		
+		mv.addObject("dto" ,memberDTO);
+		
 		mv.setViewName("/member/memberPage");
-		mv.addObject("dto", memberDTO);
+		
 		return mv;
 	}
 	
 	@RequestMapping(value = "memberUpdate", method = RequestMethod.GET)
 	public ModelAndView getMemberUpdate(MemberDTO memberDTO) {
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("member", memberDTO);
+		System.out.println(memberDTO.getName());
 		mv.setViewName("/member/memberUpdate");
 		return mv;
 	}
@@ -41,10 +47,11 @@ public class MemberController {
 		mv = new ModelAndView();
 		MemberDTO gMemberDTO = (MemberDTO)session.getAttribute("member");
 		memberDTO.setId(gMemberDTO.getId());
+		
 		int result = memberService.setMemberUpdate(memberDTO);
-		System.out.println(memberDTO.getPhone());
-		session.setAttribute("member", memberDTO);
+//		session.setAttribute("member", memberDTO);
 		mv.setViewName("redirect:/member/memberPage");
+		
 		return mv;
 	}
 	
@@ -70,10 +77,13 @@ public class MemberController {
 	public ModelAndView getMemberLogin(MemberDTO memberDTO, HttpServletRequest request) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		memberDTO = memberService.getMemberLogin(memberDTO);
-		HttpSession session = request.getSession();
-		
-		session.setAttribute("member", memberDTO);
-		
+		if(memberDTO != null) {
+			
+			HttpSession session = request.getSession();
+			
+			session.setAttribute("member", memberDTO);
+		}
+
 		mv.setViewName("redirect:/");
 		
 		
