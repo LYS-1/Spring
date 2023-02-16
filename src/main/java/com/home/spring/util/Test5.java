@@ -1,4 +1,4 @@
-package com.company.home.util;
+package com.home.spring.util;
 class Product   {   
 
          int price, bonusPoint;    

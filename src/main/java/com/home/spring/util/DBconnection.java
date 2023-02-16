@@ -1,4 +1,4 @@
-package com.company.home.util;
+package com.home.spring.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

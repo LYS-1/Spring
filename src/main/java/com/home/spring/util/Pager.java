@@ -1,4 +1,4 @@
-package com.company.home.util;
+package com.home.spring.util;
 
 public class Pager {
 	private Long startRow;

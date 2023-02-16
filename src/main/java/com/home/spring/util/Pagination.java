@@ -1,4 +1,4 @@
-package com.company.home.util;
+package com.home.spring.util;
 
 public class Pagination {
 	private Long startRow;

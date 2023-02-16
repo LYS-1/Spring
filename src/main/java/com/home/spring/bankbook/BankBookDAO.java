@@ -7,8 +7,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.company.home.util.Pager;
-import com.company.home.util.Pagination;
+import com.home.spring.util.Pager;
+import com.home.spring.util.Pagination;
 
 @Repository
 public class BankBookDAO {
@@ -40,5 +40,10 @@ public class BankBookDAO {
 	
 	public int setBankBookDelete(BankBookDTO bankBookDTO) throws Exception{
 		return sqlSession.delete(NAMESPACE + "setBankBookDelete", bankBookDTO);
+	}
+	
+	public int setBankBookImgAdd(BankBookImgDTO bankBookImgDTO) throws Exception{
+		return sqlSession.insert(NAMESPACE + "setBankBookImgAdd", bankBookImgDTO);
+		
 	}
 }

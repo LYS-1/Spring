@@ -12,15 +12,17 @@
   		
   		<typeAlias type="java.lang.Long" alias="Long"/>
   		
-  		<typeAlias type="com.company.home.util.Pager" alias="Pager"/>
+  		<typeAlias type="com.home.spring.util.Pager" alias="Pager"/>
   		
-  		<typeAlias type="com.company.home.util.Pagination" alias="Pagination"/>
+  		<typeAlias type="com.home.spring.util.Pagination" alias="Pagination"/>
   		
   		<typeAlias type="com.home.spring.member.RoleDTO" alias="RoleDTO" />
   		
   		<typeAlias type="com.home.spring.member.MemberDTO" alias="MemberDTO"/>
   		
   		<typeAlias type="com.home.spring.bankbook.BankBookDTO" alias="BankBookDTO"/>
+  		
+  		<typeAlias type="com.home.spring.bankbook.BankBookImgDTO" alias="BankBookImgDTO"/>
   		<!-- 없는 파일 미리 만들기 X -->
   	</typeAliases>
   	

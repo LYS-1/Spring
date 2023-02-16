@@ -18,7 +18,7 @@
 			<h1 class="col-md-7 mx-auto text-center">BankBook Product Insert Page</h1>
 		</div>
 		<div class="row col-md-7 mx-auto">
-			<form action="./insert" method = "post">
+			<form action="./insert" method = "post" enctype="multipart/form-data">
 				<div class="mb-1">
 					<label for="bookName" class="form-label ps-0">상품 이름</label>
 					<input type="text" class="form-control" id="bookName" name="bookName" placeholder="상품 이름 입력"/>
@@ -39,7 +39,7 @@
 				</div>
 				<div class="mb-1">
 					<label for="files" class="form-label ps-0">이미지</label>
-					<input type="file" class="form-control" id="files" name="pic" placeholder="상세 설명" rows=7></textarea>
+					<input type="file" class="form-control" id="files" name="pic" />
 				</div>
 				<!-- <div class="row col-md-7 mx-auto mb3">
 					<label class="form-label">판매 여부</label>

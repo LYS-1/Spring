@@ -40,8 +40,11 @@
  		WHERE BOOKNUMBER = #{bookNumber}
  	</select>
  	<insert id="setBankBookInsert" parameterType="BankBookDTO">
+ 		<selectKey keyProperty="bookNumber" resultType="Long" order="BEFORE">
+ 			SELECT BANKBOOK_SEQ.NEXTVAL FROM DUAL
+ 		</selectKey>
  		INSERT INTO BANKBOOK 
- 		VALUES (BANKBOOK_SEQ.NEXTVAL, #{bookName}, #{bookRate}, #{bookSale}, #{bookDetail})
+ 		VALUES (#{bookNumber}, #{bookName}, #{bookRate}, #{bookSale}, #{bookDetail})
  	</insert>
  	<delete id="setBankBookDelete" parameterType = "BankBookDTO">
  		DELETE BANKBOOK 
@@ -68,5 +71,7 @@
 		LIKE '%' || #{search} || '%'
  -->		
  	</select>
- 	
+ 	<insert id="setBankBookImgAdd" parameterType="BankBookImgDTO">
+ 		INSERT INTO BANKBOOKIMG VALUES (BANKBOOK_SEQ.NEXTVAL, #{bookNum}, #{fileName}, #{oriName})
+ 	</insert>
  </mapper>

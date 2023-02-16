@@ -8,7 +8,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.company.home.util.DBconnection;
+import com.home.spring.util.DBconnection;
 
 @Repository
 public class ProductOptionDAO {

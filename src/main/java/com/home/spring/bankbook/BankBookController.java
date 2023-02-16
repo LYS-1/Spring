@@ -2,14 +2,19 @@ package com.home.spring.bankbook;
 
 import java.util.List;
 
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.company.home.util.Pager;
-import com.company.home.util.Pagination;
+import com.home.spring.util.Pager;
+import com.home.spring.util.Pagination;
 
 
 
@@ -52,10 +57,11 @@ public class BankBookController {
 	}
 	//insert data into DB
 	@RequestMapping(value = "insert", method = RequestMethod.POST)
-	public ModelAndView setBankBookInsert(BankBookDTO bankBookDTO) throws Exception {
+	public ModelAndView setBankBookInsert(BankBookDTO bankBookDTO, MultipartFile pic, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
-
-		int result = bankBookService.setBankBookInsert(bankBookDTO);
+		ServletContext servletContext = session.getServletContext();
+		System.out.println(servletContext);
+		int result = bankBookService.setBankBookInsert(bankBookDTO, pic);
 		
 		mv.setViewName("redirect:./list");
 		
