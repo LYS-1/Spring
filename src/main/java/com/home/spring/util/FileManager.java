@@ -23,6 +23,7 @@ public class FileManager {
 		//존재하지않으면 폴더를 생성
 		if(!file.exists()) {
 			file.mkdirs();
+			System.out.println("생성됨");
 		}
 		
 		//파일을 저장하기
