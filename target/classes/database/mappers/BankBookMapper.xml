@@ -4,12 +4,32 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
  <mapper namespace = "com.home.spring.bankbook.BankBookDAO">
+ 	
+ 	<sql id="searchCondition">
+ 		WHERE
+ 		<choose>
+			<when test="kind == 'contents'">
+				BOOKDETAIL 
+			</when>
+			<otherwise>
+				BOOKNAME 
+			</otherwise>
+		</choose>
+		LIKE '%' || #{search} || '%'
+ 	</sql>
+ 	
+ 	
  	<select id="getBankBookList" parameterType="Pagination" resultType="BankBookDTO">
  		SELECT * FROM 
 		(
 			SELECT ROWNUM R, B.* FROM
 				(
 					SELECT * FROM BANKBOOK
+					
+					 
+					<include refid="searchCondition"></include>
+					
+				 
 					ORDER BY BOOKNUMBER DESC
 				) B
 		) 
@@ -32,8 +52,21 @@
  		SET BOOKNAME = #{bookName}, BOOKRATE = #{bookRate}, BOOKSALE = #{bookSale}, BOOKDETAIL = #{bookDetail}
  		WHERE BOOKNUMBER = #{bookNumber}
  	</update>
- 	<select id="getBankBookCount" resultType="Long">
+ 	<select id="getBankBookCount" parameterType="Pagination" resultType="Long">
  		SELECT COUNT(BOOKNUMBER) FROM BANKBOOK
+ 		<include refid="searchCondition"></include>
+<!--  		
+ 		WHERE 
+		<choose>
+			<when test="kind == 'contents'">
+				BOOKDETAIL 
+			</when>
+			<otherwise>
+				BOOKNAME 
+			</otherwise>
+		</choose>
+		LIKE '%' || #{search} || '%'
+ -->		
  	</select>
  	
  </mapper>

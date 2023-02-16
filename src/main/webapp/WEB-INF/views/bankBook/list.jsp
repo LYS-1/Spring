@@ -43,43 +43,70 @@
 			</table>
 			<div class="row">
 				<nav aria-label="Page navigation example">
-				  <ul class="pagination">
-				  	<c:if test="${pager.startNum != 1}">
-				    	<li class="page-item">
-				      		<a class="page-link" href="./list?page=1" aria-label="Previous">
-				        		<span aria-hidden="true">&laquo;</span>
-				      		</a>
-				    	</li>
-				    </c:if>
-				    <c:if test="${pager.startNum != 1}">
-				    	<li class="page-item">
-				      		<a class="page-link" href="./list?page=1" aria-label="Previous">
-				        		<span aria-hidden="true">&lsaquo;</span>
-				      		</a>
-				    	</li>
-				    </c:if>
-				    
-				    <c:forEach begin="${pager.startNum}" end="${pager.endNum}" var="i">
-					    <li class="page-item"><a class="page-link" href="./list?page=${i}">${i}</a></li>
-					</c:forEach> 
-				    
-				    <c:if test="${pager.after == false }">
-				    	<li class="page-item">
-				      		<a class="page-link" href="./list?page=${pager.endNum + 1}" aria-label="Next">
-				        		<span aria-hidden="true">&rsaquo;</span>
-				      		</a>
-				    	</li>
-				    </c:if>
-				    <c:if test="${pager.after == false }">
-				    	<li class="page-item">
-				      		<a class="page-link" href="./list?page=${pager.totalPage}" aria-label="Next">
-				        		<span aria-hidden="true">&raquo;</span>
-				      		</a>
-				    	</li>
-				    </c:if>
-				  </ul>
+					<div class="row">
+						<div class="col-md-10">
+							<ul class="pagination">
+								<c:if test="${pager.page != 1}">
+									<li class="page-item">
+										<a class="page-link" href="./list?page=1&kind=${pager.kind}&search=${pager.search}" aria-label="Previous">
+											<span aria-hidden="true">&laquo;</span>
+					      				</a>
+					    			</li>
+					    		</c:if>
+					    		<c:if test="${pager.page != 1}">
+					    			<li class="page-item">
+					      				<a class="page-link" href="./list?page=${pager.page - 1}" aria-label="Previous">
+					        				<span aria-hidden="true">&lsaquo;</span>
+					      				</a>
+					    			</li>
+					    		</c:if>
+					    
+					    		<c:forEach begin="${pager.startNum}" end="${pager.endNum}" var="i">
+						    		<li class="page-item"><a class="page-link" href="./list?page=${i}&kind=${pager.kind}&search=${pager.search}">${i}</a></li>
+								</c:forEach> 
+					    
+					    		<c:if test="${pager.page != pager.totalPage }">
+					    			<li class="page-item">
+					      				<a class="page-link" href="./list?page=${pager.page + 1}" aria-label="Next">
+					        				<span aria-hidden="true">&rsaquo;</span>
+					      				</a>
+					    			</li>
+					   			</c:if>
+					    		<c:if test="${pager.after == false }">
+					    			<li class="page-item">
+					      				<a class="page-link" href="./list?page=${pager.totalPage}&kind=${pager.kind}&search=${pager.search}" aria-label="Next">
+					        				<span aria-hidden="true">&raquo;</span>
+					      				</a>
+					    			</li>
+					    		</c:if>
+					  		</ul>
+						</div>
+					  	<div class="col-md-2">
+					  		<p class="fw-bold">${pager.page}/${pager.totalPage} 페이지</p>
+					  	</div>
+				  	</div>
 				</nav>
 			</div>
+			<div class="row">
+				<form class="row g-3" action="./list" method="get">
+					<div class="col-auto">
+				  		<label for="kind" class="visually-hidden">Kind</label>
+				    	<select class="form-select" name="kind" id="kind" aria-label="Default select example">
+							<option value="title">상품명</option>
+						  	<option value="contents">상품내용</option>
+						</select>
+				  	</div>
+				  	<div class="col-auto">
+				    	<label for="search" class="visually-hidden">Search</label>
+				    	<input type="text" class="form-control" name="search" id="search" placeholder="inputText">
+				  	</div>
+				  	<div class="col-auto">
+				    	<button type="submit" class="btn btn-primary mb-3">검색</button>
+				  	</div>
+				</form>
+			</div>
+			
+			
 			<div class="px-0">
 				<a href = "./insert"><button type="button" class="btn btn-primary float-end">상품 추가</button></a>
 			</div>

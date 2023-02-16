@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.company.home.util.Pagination;
 import com.home.spring.product.option.ProductOptionDAO;
 import com.home.spring.product.option.ProductOptionDTO;
 
@@ -35,8 +36,15 @@ public class ProductService {
 		return result;
 	}
 	
-	public List<ProductDTO> getProductList() throws Exception{
-		return productDAO.getProduct();
+	public List<ProductDTO> getProductList(Pagination pager) throws Exception{
+		
+		Long totalProductCount = productDAO.getProductCount(pager);
+		
+		pager.makeRow();
+		
+		pager.makeBlock(totalProductCount);
+		
+		return productDAO.getProduct(pager);
 	}
 	
 	public ProductDTO getProductDetail(ProductDTO productDTO) throws Exception{

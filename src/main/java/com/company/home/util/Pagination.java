@@ -9,17 +9,40 @@ public class Pagination {
 	
 	private Long startNum;
 	private Long endNum;
-	
+	private Long perBlock;
 	private Long totalPage;
 	private Long totalBlock;
 	private boolean after = false;
 	
-	public Long getTotalPage() {
-		return totalPage;
+	//검색 종류(사용할 컬럼)
+	private String kind;
+	//검색어
+	private String search; 
+	
+	
+	
+	
+	public String getKind() {
+		return kind;
 	}
 
-	public void setTotalPage(Long totalPage) {
-		this.totalPage = totalPage;
+	public void setKind(String kind) {
+		this.kind = kind;
+	}
+
+	public String getSearch() {
+		if(search == null) {
+			search = "";
+		}
+		return search;
+	}
+
+	public void setSearch(String search) {
+		this.search = search;
+	}
+
+	public Long getTotalPage() {
+		return totalPage;
 	}
 
 	public Long getTotalBlock() {
@@ -57,7 +80,8 @@ public class Pagination {
 
 	public Pagination(){
 		this.page = 1L;
-		this.perPage = 10L;
+		this.perPage = 5L;
+		this.perBlock = 5L;
 	}
 	
 	public void makeRow() {
@@ -71,28 +95,35 @@ public class Pagination {
 			this.totalPage ++;
 		}
 		
-		Long perBlock = 5L;
 		
-		this.totalBlock = this.totalPage / perBlock;
-		if(this.totalPage % perBlock != 0) {
+		this.totalBlock = this.totalPage / this.getPerBlock();
+		if(this.totalPage % this.getPerBlock() != 0) {
 			this.totalBlock ++;
 		}
 		
-		Long curBlock = this.page / perBlock;
-		if(this.page % perBlock != 0) {
+		Long curBlock = this.page / this.getPerBlock();
+		if(this.page % this.getPerBlock() != 0) {
 			curBlock ++;
 		}
 		
-		this.startNum = (curBlock - 1L) * perBlock + 1L;
-		this.endNum = (curBlock * perBlock);
+		this.startNum = (curBlock - 1L) * this.getPerBlock() + 1L;
+		this.endNum = (curBlock * this.getPerBlock());
 		
-		if(this.endNum > this.totalPage) {
+		if(this.page >= this.totalPage) {
 			this.after = true;
 			this.endNum = this.totalPage;
 		}
 	}
 	
 	
+	public Long getPerBlock() {
+		return perBlock;
+	}
+
+	public void setPerBlock(Long perBlock) {
+		this.perBlock = perBlock;
+	}
+
 	public Long getStartRow() {
 		return startRow;
 	}

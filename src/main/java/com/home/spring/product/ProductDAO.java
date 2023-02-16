@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.company.home.util.DBconnection;
+import com.company.home.util.Pagination;
 
 @Repository
 public class ProductDAO {
@@ -24,6 +25,11 @@ public class ProductDAO {
 	public int setProductDelete(Integer productNum) throws Exception{
 		
 		return sqlSession.delete(NAMESPACE + "setProductDelete", productNum);
+	}
+	
+	public Long getProductCount(Pagination pager) throws Exception{
+		
+		return sqlSession.selectOne(NAMESPACE + "getProductCount", pager);
 	}
 		
 	public int getMax() throws Exception{
@@ -50,9 +56,9 @@ public class ProductDAO {
 		return sqlSession.selectOne(NAMESPACE + "getProductDetail", productDTO);
 	}
 	
-	public List<ProductDTO> getProduct() throws Exception{
+	public List<ProductDTO> getProduct(Pagination pager) throws Exception{
 		
-		return sqlSession.selectList(NAMESPACE + "getProduct");
+		return sqlSession.selectList(NAMESPACE + "getProduct", pager);
 	}
 	
 	public int setProductAdd(ProductDTO productDTO) throws Exception{

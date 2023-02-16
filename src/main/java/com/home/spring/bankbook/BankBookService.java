@@ -16,7 +16,7 @@ public class BankBookService {
 	
 	public List<BankBookDTO> getBankBookList(Pagination pager) throws Exception{
 		
-		Long totalCount = bankBookDAO.getBankBookCount();
+		Long totalCount = bankBookDAO.getBankBookCount(pager);
 		
 		pager.makeRow();
 		

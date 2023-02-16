@@ -4,11 +4,35 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
  <mapper namespace = "com.home.spring.product.ProductDAO">
+	<sql id="search">
+		WHERE
+		<choose>
+			<when test="kind == 'detail'">
+				PRODUCTDETAIL
+			</when>
+			<otherwise>
+				PRODUCTNAME
+			</otherwise>
+		</choose>
+		LIKE '%' || #{search} || '%'
+	</sql>
+	<select id="getProductCount" parameterType="Pagination" resultType="Long">
+		SELECT COUNT(PRODUCTNUM) FROM PRODUCT
+		<include refid="search"></include>
+	</select>
 	
-	<select id = "getProduct" resultType = "ProductDTO">
-		SELECT PRODUCTNUM, PRODUCTNAME, PRODUCTJUMSU 
-		FROM PRODUCT
-		ORDER BY PRODUCTNUM DESC
+	
+	<select id = "getProduct" parameterType="Pagination" resultType = "ProductDTO">
+		SELECT * FROM
+		(
+			SELECT ROWNUM R, P.* FROM
+				(
+					SELECT PRODUCTNUM, PRODUCTNAME, PRODUCTJUMSU 
+					FROM PRODUCT
+					<include refid="search"></include>
+					ORDER BY PRODUCTNUM DESC
+				) P
+		) WHERE R BETWEEN #{startRow} AND #{endRow}
 	</select>
 	
 	<select id = "getProductDetail" parameterType = "ProductDTO" resultType = "ProductDTO">

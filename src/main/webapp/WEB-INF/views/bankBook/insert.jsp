@@ -37,6 +37,10 @@
 					<label for="bookDetail" class="form-label ps-0">상세 설명</label>
 					<textarea class="form-control" id="bookDetail" name="bookDetail" placeholder="상세 설명" rows=7></textarea>
 				</div>
+				<div class="mb-1">
+					<label for="files" class="form-label ps-0">이미지</label>
+					<input type="file" class="form-control" id="files" name="pic" placeholder="상세 설명" rows=7></textarea>
+				</div>
 				<!-- <div class="row col-md-7 mx-auto mb3">
 					<label class="form-label">판매 여부</label>
 					<div class="form-check">

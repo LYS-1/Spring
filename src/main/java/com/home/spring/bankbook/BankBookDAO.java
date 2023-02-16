@@ -18,8 +18,8 @@ public class BankBookDAO {
 	
 	private final String NAMESPACE = "com.home.spring.bankbook.BankBookDAO.";
 	
-	public Long getBankBookCount() throws Exception{
-		return sqlSession.selectOne(NAMESPACE + "getBankBookCount");
+	public Long getBankBookCount(Pagination pager) throws Exception{
+		return sqlSession.selectOne(NAMESPACE + "getBankBookCount", pager);
 	}
 
 	public List<BankBookDTO> getBankBookList(Pagination pager) throws Exception{
