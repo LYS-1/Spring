@@ -25,7 +25,12 @@
 				<c:when test="${dto.bookSale == 1}"><h3>판매 여부 : 판매중</h3></c:when>
 				<c:when test="${dto.bookSale == 0}"><h3>판매 여부 : 판매 종료</h3></c:when>
 			</c:choose>
-				
+			
+			<div>
+				<c:if test="${not empty dto.bankBookImgDTO}">
+					<img alt="img" src="../resources/upload/bankBook/${dto.bankBookImgDTO.fileName}">
+				</c:if>
+			</div>
 			<h3>상세 정보 : ${dto.bookDetail}</h3>
 				
 			<a href="./delete?bookNumber=${dto.bookNumber}">삭제</a>

@@ -59,6 +59,7 @@ public class BankBookController {
 	@RequestMapping(value = "insert", method = RequestMethod.POST)
 	public ModelAndView setBankBookInsert(BankBookDTO bankBookDTO, MultipartFile pic, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
+		
 		ServletContext servletContext = session.getServletContext();
 		System.out.println(servletContext);
 		int result = bankBookService.setBankBookInsert(bankBookDTO, pic);

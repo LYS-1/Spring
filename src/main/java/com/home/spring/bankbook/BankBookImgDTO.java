@@ -5,6 +5,8 @@ public class BankBookImgDTO {
 	private Long bookNum;
 	private String fileName;
 	private String oriName;
+	
+	
 	public Long getFileNum() {
 		return fileNum;
 	}

@@ -46,15 +46,17 @@ public class BankBookService {
 		
 		//1. 파일의 서버의 hdd에 저장 
 		//project 경로가 아닌 os에서 사용하는 경로
-		String realPath = servletContext.getRealPath("resources/upload/bankBook");
-		System.out.println(realPath);
-		String fileName = fileManager.saveFile(pic, realPath);
-		BankBookImgDTO bankBookImgDTO = new BankBookImgDTO();
-		bankBookImgDTO.setFileName(fileName);
-		bankBookImgDTO.setOriName(pic.getOriginalFilename());
-		bankBookImgDTO.setBookNum(bankBookDTO.getBookNumber());
-		
-		result = bankBookDAO.setBankBookImgAdd(bankBookImgDTO);
+		if(!pic.isEmpty()) {
+			String realPath = servletContext.getRealPath("resources/upload/bankBook");
+			System.out.println(realPath);
+			String fileName = fileManager.saveFile(pic, realPath);
+			BankBookImgDTO bankBookImgDTO = new BankBookImgDTO();
+			bankBookImgDTO.setFileName(fileName);
+			bankBookImgDTO.setOriName(pic.getOriginalFilename());
+			bankBookImgDTO.setBookNum(bankBookDTO.getBookNumber());
+			
+			result = bankBookDAO.setBankBookImgAdd(bankBookImgDTO);
+		}
 		return result; //bankBookDAO.setBankBookInsert(bankBookDTO);
 	}
 	
