@@ -42,7 +42,7 @@
 					      				</a>
 					    			</li>
 					    		</c:if>
-					    		<c:if test="${pager.page != 1}">
+					    		<c:if test="${pager.page != 1 && pager.startNum-1 > 0}">
 					    			<li class="page-item">
 					      				<a class="page-link" href="#" aria-label="Previous" data-board-page="${pager.startNum-1}">
 					        				<span aria-hidden="true">&lsaquo;</span>
@@ -54,7 +54,7 @@
 						    		<li class="page-item"><a class="page-link" href="#" data-board-page="${i}">${i}</a></li>
 								</c:forEach> 
 					    
-					    		<c:if test="${pager.page != pager.totalPage }">
+					    		<c:if test="${pager.page != pager.totalPage && pager.endNum + 1 <= pager.totalPage}">
 					    			<li class="page-item">
 					      				<a class="page-link" href="#" aria-label="Next" data-board-page="${pager.endNum + 1}">
 					        				<span aria-hidden="true">&rsaquo;</span>
