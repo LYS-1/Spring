@@ -23,6 +23,16 @@
   		<typeAlias type="com.home.spring.bankbook.BankBookDTO" alias="BankBookDTO"/>
   		
   		<typeAlias type="com.home.spring.bankbook.BankBookImgDTO" alias="BankBookImgDTO"/>
+  		
+  		<typeAlias type="com.home.spring.bankbook.BankBookCommentDTO" alias="BankBookCommentDTO"/>
+  		
+  		<typeAlias type="com.home.spring.board.BbsDTO" alias="BbsDTO"/>
+  		
+  		<typeAlias type="com.home.spring.board.BoardDTO" alias="BoardDTO"/>
+  		
+  		<typeAlias type="com.home.spring.board.notice.NoticeDTO" alias="NoticeDTO"/>
+  		
+  		<typeAlias type="com.home.spring.board.qna.QnaDTO" alias="QnaDTO"/>
   		<!-- 없는 파일 미리 만들기 X -->
   	</typeAliases>
   	

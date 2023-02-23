@@ -19,7 +19,7 @@ public class BankBookService {
 	private BankBookDAO bankBookDAO;
 	
 	//테스트돌리면 안들어감
-	@Autowired
+	//@Autowired
 	private ServletContext servletContext;
 	
 	@Autowired

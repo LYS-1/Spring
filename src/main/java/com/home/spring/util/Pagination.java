@@ -1,6 +1,16 @@
 package com.home.spring.util;
 
 public class Pagination {
+	
+	private Long bookNumber;
+
+	public Long getBookNumber() {
+		return bookNumber;
+	}
+
+	public void setBookNumber(Long bookNumber) {
+		this.bookNumber = bookNumber;
+	}
 	private Long startRow;
 	private Long endRow;
 	
@@ -55,6 +65,9 @@ public class Pagination {
 	
 	
 	public Long getStartNum() {
+		if(this.startNum < 1) {
+			this.startNum = 1L;
+		}
 		return startNum;
 	}
 
@@ -108,7 +121,9 @@ public class Pagination {
 		
 		this.startNum = (curBlock - 1L) * this.getPerBlock() + 1L;
 		this.endNum = (curBlock * this.getPerBlock());
-		
+		if(this.totalPage < 5) {
+			this.endNum = this.totalPage;
+		}
 		if(this.page >= this.totalPage) {
 			this.after = true;
 			this.endNum = this.totalPage;
