@@ -20,14 +20,39 @@
 		<include refid="condition"></include>
 	</select>
 	
-	<select id="getBoardList" parameterType="Pagination" resultType="QNADTO">
+	<select id="getBoardList" parameterType="Pagination" resultType="QnaDTO">
 		SELECT * FROM 
 		(
 			SELECT ROWNUM R, N.* FROM
 			(
-				SELECT NUM, TITLE, WRITER, REGDATE, HIT FROM QNA
+				SELECT NUM, TITLE, WRITER, REGDATE, HIT, DEPTH FROM QNA
 				<include refid="condition"></include>
+				ORDER BY REF DESC, STEP ASC
 			) N
-		)WHERE NUM BETWEEN #{startRow} AND #{endRow}
+		)WHERE R BETWEEN #{startRow} AND #{endRow}
 	</select>
+	
+	<select id="getBoardDetail" parameterType="boardDTO" resultType="QnaDTO">
+		SELECT * FROM QNA WHERE NUM = #{num}
+	</select>
+	
+	<insert id="setBoardAdd" parameterType="QnaDTO">
+		<selectKey keyProperty="num" resultType="Long" order="BEFORE">
+			SELECT QNA_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO QNA (NUM, TITLE, CONTENTS, WRITER, REGDATE, HIT, REF, STEP, DEPTH)
+		VALUES(#{num}, #{title}, #{contents}, #{writer}, sysdate, 0, #{num}, 0, 0)
+	</insert>
+	
+	<insert id="setReplyAdd" parameterType="QnaDTO">
+		INSERT INTO QNA (NUM, TITLE, CONTENTS, WRITER, REGDATE, HIT, REF, STEP, DEPTH)
+		VALUES(QNA_SEQ.NEXTVAL, #{title}, #{contents}, #{writer}, sysdate, 0, #{ref}, #{step}, #{depth})
+	</insert>
+	
+	<update id="setStepUpdate" parameterType="QnaDTO">
+		UPDATE QNA SET STEP = STEP + 1
+		WHERE REF = #{ref} AND STEP > #{step}
+	</update>
+	
+	
 </mapper>

@@ -9,14 +9,23 @@ import org.springframework.stereotype.Repository;
 import com.home.spring.board.BbsDTO;
 import com.home.spring.board.BoardDAO;
 import com.home.spring.board.BoardDTO;
+import com.home.spring.util.BoardFilesDTO;
 import com.home.spring.util.Pagination;
 
 @Repository
 public class QnaDAO implements BoardDAO {
+	
+	@Override
+	public int setBoardImgAdd(BoardFilesDTO boardFilesDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 	@Autowired
 	private SqlSession sqlSession;
 	
 	private final String NAMESPACE = "com.home.spring.board.qna.QnaDAO.";
+	
 	@Override
 	public Long getTotalCount(Pagination pager) throws Exception {
 		// TODO Auto-generated method stub
@@ -32,7 +41,7 @@ public class QnaDAO implements BoardDAO {
 	@Override
 	public int setBoardAdd(BbsDTO bbsDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.insert(NAMESPACE + "setBoardAdd", bbsDTO);
 	}
 
 	@Override
@@ -50,7 +59,14 @@ public class QnaDAO implements BoardDAO {
 	@Override
 	public BoardDTO getBoardDetail(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectOne(NAMESPACE + "getBoardDetail", boardDTO);
 	}
-
+	
+	public int setStepUpdate(QnaDTO qnaDTO) throws Exception{
+		return sqlSession.update(NAMESPACE + "setStepUpdate", qnaDTO);
+	}
+	
+	public int setReplyAdd(QnaDTO qnaDTO) throws Exception{
+		return sqlSession.insert(NAMESPACE + "setReplyAdd", qnaDTO); 
+	}
 }

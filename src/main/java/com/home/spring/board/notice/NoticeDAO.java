@@ -9,15 +9,23 @@ import org.springframework.stereotype.Repository;
 import com.home.spring.board.BbsDTO;
 import com.home.spring.board.BoardDAO;
 import com.home.spring.board.BoardDTO;
+import com.home.spring.util.BoardFilesDTO;
 import com.home.spring.util.Pagination;
 
 @Repository
 public class NoticeDAO implements BoardDAO {
+	
+
 	@Autowired
 	private SqlSession sqlSession;
 	
 	private final String NAMESPACE = "com.home.spring.board.notice.NoticeDAO.";
 	
+	@Override
+	public int setBoardImgAdd(BoardFilesDTO boardFilesDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.insert(NAMESPACE + "setBoardImgAdd", boardFilesDTO);
+	}
 	
 	@Override
 	public List<BbsDTO> getBoardList(Pagination pager) throws Exception {
@@ -28,7 +36,7 @@ public class NoticeDAO implements BoardDAO {
 	@Override
 	public int setBoardAdd(BbsDTO bbsDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.insert(NAMESPACE + "setBoardAdd", bbsDTO);
 	}
 
 	@Override
@@ -46,7 +54,7 @@ public class NoticeDAO implements BoardDAO {
 	@Override
 	public BoardDTO getBoardDetail(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectOne(NAMESPACE + "getBoardDetail", boardDTO);
 	}
 
 	@Override

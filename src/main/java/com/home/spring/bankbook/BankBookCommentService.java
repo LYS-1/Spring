@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.home.spring.board.BbsDAO;
 import com.home.spring.board.BbsDTO;
@@ -28,7 +29,7 @@ public class BankBookCommentService implements BbsService{
 	}
 
 	@Override
-	public int setBoardAdd(BbsDTO bbsDTO) throws Exception {
+	public int setBoardAdd(BbsDTO bbsDTO, MultipartFile files[]) throws Exception {
 		// TODO Auto-generated method stub
 		return 0;
 	}

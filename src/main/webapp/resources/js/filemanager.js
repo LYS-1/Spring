@@ -4,6 +4,22 @@ const btn2 = document.getElementById('resetBTN');
 let count = 0;
 let max =4;
 let param='pic';
+let disable = 0;
+div1.addEventListener('click', function(e){
+    if(e.target.classList.contains('cancelButton')){
+        let id='div' + e.target.getAttribute('data-btn-idx');
+        console.log("delete : " + id);
+        document.getElementById(id).remove();
+        let labelList = document.getElementsByClassName('filelabel');
+        for(let i = 0; i < labelList.length; i ++){
+            labelList[i].innerText = '이미지' + (i+1);
+        }
+        disable --;
+        console.log("disable : ",disable);
+    }
+    
+});
+
 function setName(p){
     param=p;
 }
@@ -41,39 +57,57 @@ btn2.addEventListener('click', function(){
 
 btn.addEventListener('click', function(){
     count ++;
+    disable ++;
     
     alert(count + "회 클릭했음.");
-    if(count > 4){
-        
+    if(disable > 4){
+        disable = 4;
         alert("4개 이상의 이미지 삽입 불가능");
         return false;
     }
     let d = document.createElement('div');
-    let l = document.createElement('label');
-    let i = document.createElement('input');
-
-    let lt = document.createTextNode('이미지' + count);
-    
     let dc = document.createAttribute("class");
-    
+    let di = document.createAttribute('id');
+    dc.value='input-group mb-3';
+    di.value='div'+count;
+
+    let l = document.createElement('label');
+    let lt = document.createTextNode('이미지' + disable);
     let lc = document.createAttribute("class");
     let lf = document.createAttribute("for");
+    
+    lc.value='form-label ps-0 my-auto md-4 filelabel';
+    lf.value='files';
+    
+    let i = document.createElement('input');
     let ic = document.createAttribute("class");
     let it = document.createAttribute('type');
     let ii = document.createAttribute('id');
     let ina = document.createAttribute('name');
-
-    dc.value='mb-1 imgDIV';
+    let inputAriaDescribedby = document.createAttribute('aria-describedby');
     
-    lc.value='form-label ps-0';
-    lf.value='files';
-    ic.value='form-control';
+    ic.value='form-control md-8';
     it.value='file';
     ii.value='files';
     ina.value=param;
+    inputAriaDescribedby.value = "button-addon2"
+
+    // <button type="button">X</button>
+    let button = document.createElement('button');
+    let buttonClass = document.createAttribute('class');
+    let buttonType = document.createAttribute('type');
+    let buttonIdx = document.createAttribute('data-btn-idx');
+    let buttonText = document.createTextNode('X');
+    let buttonId = document.createAttribute('id');
+    
+    buttonClass.value = 'btn btn-outline-secondary btn-danger text-black cancelButton';
+    buttonType.value = 'button';
+    buttonIdx.value = count;
+    buttonId.value = 'button-addon2';
+
 
     d.setAttributeNode(dc);
-    
+    d.setAttributeNode(di);
 
     l.setAttributeNode(lc);
     l.setAttributeNode(lf);
@@ -82,13 +116,22 @@ btn.addEventListener('click', function(){
     i.setAttributeNode(it);
     i.setAttributeNode(ii);
     i.setAttributeNode(ina);
+    i.setAttributeNode(inputAriaDescribedby);
 
+    button.setAttributeNode(buttonClass);
+    button.setAttributeNode(buttonType);
+    button.setAttributeNode(buttonIdx);
+    button.setAttributeNode(buttonId);
+    
     l.appendChild(lt);
+    button.appendChild(buttonText);
 
     d.appendChild(l);
-    l.appendChild(i);
+    d.appendChild(i);
+    d.appendChild(button);
 
     div1.append(d);
+    
 });
 
     // <div class="mb-1">

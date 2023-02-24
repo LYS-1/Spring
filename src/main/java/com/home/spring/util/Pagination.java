@@ -93,7 +93,7 @@ public class Pagination {
 
 	public Pagination(){
 		this.page = 1L;
-		this.perPage = 5L;
+		this.perPage = 10L;
 		this.perBlock = 5L;
 	}
 	

@@ -33,6 +33,8 @@
   		<typeAlias type="com.home.spring.board.notice.NoticeDTO" alias="NoticeDTO"/>
   		
   		<typeAlias type="com.home.spring.board.qna.QnaDTO" alias="QnaDTO"/>
+  		
+  		<typeAlias type="com.home.spring.util.BoardFilesDTO" alias="boardFilesDTO"/>
   		<!-- 없는 파일 미리 만들기 X -->
   	</typeAliases>
   	
