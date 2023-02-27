@@ -13,6 +13,15 @@ import org.springframework.web.multipart.MultipartFile;
 @Component
 public class FileManager {
 	
+	//file을 hdd에서 삭제
+	public boolean fileDelete(String path, String fileName) throws Exception{
+		File file = new File(path, fileName);
+		
+		boolean result = file.delete();
+		
+		return result;
+	}
+	
 	//File을 hdd에 저장
 	public String saveFile(MultipartFile multipartFile, String path) throws Exception{
 		//어디에 저장할것인가 /resources/upload/bankBook/..
@@ -23,7 +32,6 @@ public class FileManager {
 		//존재하지않으면 폴더를 생성
 		if(!file.exists()) {
 			file.mkdirs();
-			System.out.println("생성됨");
 		}
 		
 		//파일을 저장하기
@@ -34,7 +42,7 @@ public class FileManager {
 		
 		//확장자 추가
 		name = name + "_" + multipartFile.getOriginalFilename();
-		System.out.println(name);
+		
 		
 		//파일 저장
 		//어느 경로에 어느 이름으로 저장할건지 파일 객체를 통해서 만들어야함

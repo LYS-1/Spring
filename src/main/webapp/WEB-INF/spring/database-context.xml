@@ -13,11 +13,11 @@
 	</bean>
 	
 	
-	<!-- Connection localhost-->
+	<!-- Connection 192.168.1.138 -->
 	<bean class = "org.springframework.jdbc.datasource.DriverManagerDataSource" id = "dataSource">
-		<property name = "username" value= "user01"></property>
-		<property name= "password" value= "user01"></property>
-		<property name= "url" value = "jdbc:oracle:thin:@192.168.1.138:1521:xe"></property>
+		<property name = "username" value= "USER01"></property><!-- 학원에선 ID PW 소문자 -->
+		<property name= "password" value= "USER01"></property>
+		<property name= "url" value = "jdbc:oracle:thin:@localhost:1521:xe"></property>
 		<property name= "driverClassName" value = "oracle.jdbc.driver.OracleDriver"></property>
 	</bean>
 	

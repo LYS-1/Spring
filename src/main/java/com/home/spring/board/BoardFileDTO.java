@@ -1,11 +1,10 @@
-package com.home.spring.util;
+package com.home.spring.board;
 
-public class BoardFilesDTO {
+public class BoardFileDTO {
 	private Long fileNum;
 	private Long num;
 	private String fileName;
 	private String oriName;
-	
 	public Long getFileNum() {
 		return fileNum;
 	}
@@ -30,5 +29,4 @@ public class BoardFilesDTO {
 	public void setOriName(String oriName) {
 		this.oriName = oriName;
 	}
-	
 }

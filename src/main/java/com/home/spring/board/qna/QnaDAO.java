@@ -9,17 +9,13 @@ import org.springframework.stereotype.Repository;
 import com.home.spring.board.BbsDTO;
 import com.home.spring.board.BoardDAO;
 import com.home.spring.board.BoardDTO;
-import com.home.spring.util.BoardFilesDTO;
+import com.home.spring.board.BoardFileDTO;
 import com.home.spring.util.Pagination;
 
 @Repository
 public class QnaDAO implements BoardDAO {
 	
-	@Override
-	public int setBoardImgAdd(BoardFilesDTO boardFilesDTO) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	
 
 	@Autowired
 	private SqlSession sqlSession;
@@ -53,7 +49,19 @@ public class QnaDAO implements BoardDAO {
 	@Override
 	public int setBoardDelete(BbsDTO bbsDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.delete(NAMESPACE + "setBoardDelete", bbsDTO);
+	}
+
+	@Override
+	public int setBoardFileAdd(BoardFileDTO boardFileDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.insert(NAMESPACE + "setBoardFileAdd", boardFileDTO);
+	}
+
+	@Override
+	public List<BoardFileDTO> getBoardFileList(BbsDTO bbsDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(NAMESPACE + "getBoardFileList", bbsDTO);
 	}
 
 	@Override

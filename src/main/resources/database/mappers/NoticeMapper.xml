@@ -37,17 +37,41 @@
 		)WHERE R BETWEEN #{startRow} AND #{endRow}
 	</select>
 	
-	<select id="getBoardDetail" parameterType="boardDTO" resultType="noticeDTO">
-		SELECT * FROM NOTICE WHERE NUM = #{num}
+	<select id="getBoardDetail" parameterType="boardDTO" resultMap="getBoardDetailResult">
+		SELECT * 
+		FROM NOTICE N
+			LEFT JOIN NOTICEFILES NF
+			ON(NF.NUM = N.NUM)
+		WHERE N.NUM = #{num}
 	</select>
 	
+	<resultMap type="NoticeDTO" id="getBoardDetailResult">
+		<id column="NUM" property="num"/>
+		<result column="TITLE" property="title"/>
+		<result column="WRITER" property="writer"/>
+		<result column="CONTENTS" property="contents"/>
+		<result column="REGDATE" property="regDate"/>
+		<result column="HIT" property="hit"/>
+		<!-- oftype = generictype 사용 -->
+		<collection property="boardFileDTOs" javaType="List" ofType="BoardFileDTO">
+			<id column="FILENUM" property="fileNum"/>
+			<result column="FILENAME" property="fileName"/>
+			<result column="ORINAME" property="oriName"/>
+		</collection>
+	</resultMap>
+	
 	<insert id="setBoardAdd" parameterType="bbsDTO">
+		<selectKey keyProperty="num" resultType="Long" order="BEFORE">
+			SELECT QNA_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
 		INSERT INTO NOTICE (NUM, TITLE, CONTENTS, WRITER, REGDATE, HIT) 
-		VALUES (NOTICE_SEQ.NEXTVAL, #{title}, #{contents}, #{writer}, sysdate, 0)
+		VALUES (#{num}, #{title}, #{contents}, #{writer}, sysdate, 0)
 	</insert>
 	
-	<insert id="setBoardImgAdd" parameterType="boardFilesDTO">
+	<insert id="setBoardFileAdd" parameterType="BoardFileDTO">
 		INSERT INTO NOTICEFILES
-		VALUES (NOTICEFILES_SEQ.NEXTVAL, #{num}, #{fileName}, #{oriName})
+		VALUES (NOTICE_SEQ.NEXTVAL, #{num}, #{fileName}, #{oriName})
 	</insert>
+	
+	
 </mapper>

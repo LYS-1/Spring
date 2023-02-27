@@ -51,6 +51,10 @@
 		</div>
 	</div>
 	<script src="/resources/js/filemanager.js"></script>
+	<script>
+		setMax(5);
+		setParam('files');
+	</script>
 	<c:import url="../template/common_js.jsp"></c:import>
 </body>
 </html>

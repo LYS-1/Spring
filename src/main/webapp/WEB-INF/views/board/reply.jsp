@@ -33,10 +33,15 @@
 					<textarea class="form-control" id="contents" name="contents" placeholder="상세 내용" rows=7></textarea>
 				</div>
 				
-				<!-- <div id="fileList">
+				<div id="fileList">
+					<!-- <div class="mb-1">
+						<label for="files" class="form-label ps-0">이미지</label>
+						<input type="file" class="form-control" id="files" name="files" />
+						<button type="button">X</button>
+					</div> -->
 					<button type="button" id="imgBTN" class="btn btn-primary">ADD</button>
 					<button type="button" id="resetBTN" class="btn btn-primary">RESET</button>
-				</div> -->				
+				</div>			
 				<div class="float-end mt-3">
 					<button type="submit" class="btn btn-primary">글쓰기</button>
 				</div>

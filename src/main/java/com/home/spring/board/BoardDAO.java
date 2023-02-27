@@ -1,6 +1,6 @@
 package com.home.spring.board;
 
-import com.home.spring.util.BoardFilesDTO;
+import java.util.List;
 
 public interface BoardDAO extends BbsDAO{
 
@@ -8,5 +8,8 @@ public interface BoardDAO extends BbsDAO{
 	public BoardDTO getBoardDetail(BoardDTO boardDTO)throws Exception;
 	
 	//files insert
-	public int setBoardImgAdd(BoardFilesDTO boardFilesDTO) throws Exception;
+	public int setBoardFileAdd(BoardFileDTO boardFileDTO) throws Exception;
+	
+	//boardfilelist
+	public List<BoardFileDTO> getBoardFileList(BbsDTO bbsDTO) throws Exception;
 }

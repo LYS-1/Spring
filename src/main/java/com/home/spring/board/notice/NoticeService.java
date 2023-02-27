@@ -3,6 +3,7 @@ package com.home.spring.board.notice;
 import java.util.List;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -13,8 +14,8 @@ import com.home.spring.board.BbsDAO;
 import com.home.spring.board.BbsDTO;
 import com.home.spring.board.BoardDAO;
 import com.home.spring.board.BoardDTO;
+import com.home.spring.board.BoardFileDTO;
 import com.home.spring.board.BoardService;
-import com.home.spring.util.BoardFilesDTO;
 import com.home.spring.util.FileManager;
 import com.home.spring.util.Pagination;
 
@@ -37,21 +38,21 @@ public class NoticeService implements BoardService{
 	}
 
 	@Override
-	public int setBoardAdd(BbsDTO bbsDTO, MultipartFile files[]) throws Exception {
+	public int setBoardAdd(BbsDTO bbsDTO, MultipartFile files[], HttpSession session) throws Exception {
 		// TODO Auto-generated method stub
 		int result = noticeDAO.setBoardAdd(bbsDTO);
-		for(int i = 0; i < files.length; i ++) {	
-			if(!files[i].isEmpty()) {
+		for(MultipartFile file : files) {	
+			if(!file.isEmpty()) {
 				String realPath = servletContext.getRealPath("resources/upload/Notice");
-				System.out.println(realPath);
-				String fileName = fileManager.saveFile(files[i], realPath);
+				
+				String fileName = fileManager.saveFile(file, realPath);
 				//filesdto
-				BoardFilesDTO boardFilesDTO = new BoardFilesDTO();
-				boardFilesDTO.setFileName(fileName);
-				boardFilesDTO.setOriName(files[i].getOriginalFilename());
-				boardFilesDTO.setNum(bbsDTO.getNum());
+				BoardFileDTO boardFileDTO = new BoardFileDTO();
+				boardFileDTO.setFileName(fileName);
+				boardFileDTO.setOriName(file.getOriginalFilename());
+				boardFileDTO.setNum(bbsDTO.getNum());
 				//imgadd추가
-				result = noticeDAO.setBoardImgAdd(boardFilesDTO);
+				result = noticeDAO.setBoardFileAdd(boardFileDTO);
 			}
 		}
 		
@@ -65,7 +66,7 @@ public class NoticeService implements BoardService{
 	}
 
 	@Override
-	public int setBoardDelete(BbsDTO bbsDTO) throws Exception {
+	public int setBoardDelete(BbsDTO bbsDTO, HttpSession session) throws Exception {
 		// TODO Auto-generated method stub
 		return 0;
 	}

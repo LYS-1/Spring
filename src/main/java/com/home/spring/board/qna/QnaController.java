@@ -2,6 +2,8 @@ package com.home.spring.board.qna;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,10 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.home.spring.board.BbsDTO;
-import com.home.spring.board.BbsService;
 import com.home.spring.board.BoardDTO;
-import com.home.spring.board.BoardService;
-import com.home.spring.board.notice.NoticeDTO;
 import com.home.spring.util.Pagination;
 
 @Controller
@@ -53,10 +52,10 @@ public class QnaController {
 	}
 	
 	@PostMapping(value="add")
-	public ModelAndView setBoardAdd(QnaDTO qnaDTO, MultipartFile files[]) throws Exception{
+	public ModelAndView setBoardAdd(QnaDTO qnaDTO, MultipartFile []files, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
-		int result = qnaService.setBoardAdd(qnaDTO, files);
+		int result = qnaService.setBoardAdd(qnaDTO, files, session);
 		
 		String msg = "등록 실패";
 		if(result > 0) {
@@ -108,4 +107,25 @@ public class QnaController {
 		
 		return mv;
 	}
+	
+	@PostMapping(value="delete")
+	public ModelAndView setBoardDelete(BbsDTO bbsDTO, HttpSession session) throws Exception{
+		
+		ModelAndView mv = new ModelAndView();
+		
+		int result = qnaService.setBoardDelete(bbsDTO, session);
+		
+		String msg = "삭제 실패";
+		
+		if(result > 0) {
+			msg = "삭제 성공";
+		}
+		
+		mv.addObject("msg", msg);
+		mv.setViewName("/common/result");
+		
+		return mv;
+	}
+	
+	
 }

@@ -5,6 +5,7 @@ let count = 0;
 let max =4;
 let param='pic';
 let disable = 0;
+
 div1.addEventListener('click', function(e){
     if(e.target.classList.contains('cancelButton')){
         let id='div' + e.target.getAttribute('data-btn-idx');
@@ -20,7 +21,7 @@ div1.addEventListener('click', function(e){
     
 });
 
-function setName(p){
+function setParam(p){
     param=p;
 }
 function setMax(m){
