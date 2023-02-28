@@ -14,9 +14,31 @@
  		VALUES(#{id}, (SELECT ROLENUM FROM ROLE WHERE ROLENAME='MEMBER'))
  	</insert>
  	
- 	<select id="memberLogin" parameterType="MemberDTO" resultType="MemberDTO">
- 		SELECT * FROM MEMBER WHERE ID = #{id}
+ 	<select id="memberLogin" parameterType="MemberDTO" resultMap="memberLoginResultMap">
+ 		SELECT M.*, R.*
+		FROM MEMBER M
+			INNER JOIN
+			MEMBER_ROLE MR
+			ON (M.ID=MR.ID)
+			INNER JOIN 
+			ROLE R
+			ON (MR.ROLENUM = R.ROLENUM)
+		WHERE M.ID = #{id}
+
  	</select>
+ 	<resultMap type="MemberDTO" id="memberLoginResultMap">
+ 		<id column="ID" property="id"/>
+ 		<result column="PW" property="pw"/>
+ 		<result column="NAME" property="name"/>
+ 		<result column="PHONE" property="phone"/>
+ 		<result column="EMAIL" property="email"/>
+ 		<result column="ADDRESS" property="address"/>
+ 		
+ 		<association property="roleDTO" javaType="RoleDTO">
+ 			<id column="ROLENUM" property="roleNum"/>
+ 			<result column="ROLENAME" property="roleName"/>	
+ 		</association>
+ 	</resultMap>
  	
  	<update id="memberUpdate" parameterType="MemberDTO">
  		UPDATE MEMBER

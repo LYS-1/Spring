@@ -18,6 +18,7 @@ import com.home.spring.board.BbsDTO;
 import com.home.spring.board.BoardDTO;
 import com.home.spring.board.BoardFileDTO;
 import com.home.spring.board.BoardService;
+import com.home.spring.member.MemberDTO;
 import com.home.spring.util.Pagination;
 
 @Controller
@@ -46,9 +47,11 @@ public class NoticeController {
 	}
 	
 	@GetMapping(value="add")
-	public ModelAndView setBoardAdd() throws Exception{
+	public ModelAndView setBoardAdd(HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
+		
 		mv.setViewName("/board/add");
+
 		return mv;
 	}
 	

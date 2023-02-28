@@ -20,13 +20,23 @@
 			<table class="table table-hover">
 				<thead>
 					<tr>
-						<th>Num</th><th>Title</th><th>Date</th><th>Hit</th>
+						<th>Num</th><th>Writer</th><th>Title</th><th>Date</th><th>Hit</th>
 					</tr>
 				</thead>
 				<tbody>
 					<c:forEach items="${list}" var="dto">
 						<tr>
 							<td>${dto.num}</td>
+							<td>
+								<c:choose>
+									<c:when test="${boardName eq 'notice'}">
+										관리자
+									</c:when>
+									<c:otherwise>
+										${dto.writer}	
+									</c:otherwise>
+								</c:choose>
+							</td>
 							<td>
 								<c:catch>
 									<!-- notice에 depth가 없어서 Exception 발생 -->
@@ -113,9 +123,18 @@
 				    	<button type="submit" class="btn btn-primary mb-3">검색</button>
 				  	</div>
 				</form>
-				<div class="">
-					<a href="./add" class="btn btn-primary float-end">글 작성</a>
-				</div>
+				<c:if test="${not empty member}">
+					<c:if test="${boardName eq 'notice' and member.roleDTO.roleName eq 'MANAGER'}">		
+						<div class="">
+							<a href="./add" class="btn btn-primary float-end">글 작성</a>
+						</div>	
+					</c:if>
+					<c:if test="${boardName ne 'notice'}">
+						<div class="">
+							<a href="./add" class="btn btn-primary float-end">글 작성</a>
+						</div>
+					</c:if>
+				</c:if>
 			</div>
 			
 			

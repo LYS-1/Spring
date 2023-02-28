@@ -39,7 +39,7 @@
 				</div>
 				<div class="form-outline mb-4">
 					<label class="form-label redResult" for="pw2" id="pw2L">Password</label>
-					<input type="password" id="pw2" class="form-control" name="pw" placeholder="Password를 입력하세요."/>
+					<input type="password" id="pw2" class="form-control" name="pw2" placeholder="Password를 입력하세요."/>
 					<label id="pw2Label">Password를 입력하세요.</label>
 				</div>
 			<!-- Name input -->

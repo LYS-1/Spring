@@ -70,6 +70,7 @@ public class MemberController {
 	
 	@RequestMapping(value = "memberJoin", method = RequestMethod.POST)
 	public String setMemberJoin(MemberDTO memberDTO) throws Exception {
+		System.out.println("pw : " + memberDTO.getPw());
 		int result = memberService.setMemberJoin(memberDTO);
 		System.out.println(result > 0);
 		return "redirect:/";

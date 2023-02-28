@@ -14,7 +14,7 @@
 		<form class="col-md-7 mx-auto mt-4" action="./memberUpdate">
 
 		  <h1 class="text-center">My Page</h1>
-
+		  <h3 class="text-center">아이디 등급 : ${dto.roleDTO.roleName}</h3>
 		  <!-- Text input -->
 		  
 		  <div class="form-outline mb-4">

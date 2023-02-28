@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.home.spring.board.BbsDTO;
 import com.home.spring.board.BoardDTO;
 import com.home.spring.board.BoardFileDTO;
+import com.home.spring.member.MemberDTO;
 import com.home.spring.util.Pagination;
 
 @Controller
@@ -113,8 +114,13 @@ public class QnaController {
 	public ModelAndView setBoardDelete(BbsDTO bbsDTO, HttpSession session) throws Exception{
 		
 		ModelAndView mv = new ModelAndView();
+		mv.setViewName("/common/result");
+		
+		System.out.println("if문 진입전");
+		
 		
 		int result = qnaService.setBoardDelete(bbsDTO, session);
+		
 		
 		String msg = "삭제 실패";
 		
@@ -123,7 +129,7 @@ public class QnaController {
 		}
 		
 		mv.addObject("msg", msg);
-		mv.setViewName("/common/result");
+		mv.addObject("url", "./list");
 		
 		return mv;
 	}
