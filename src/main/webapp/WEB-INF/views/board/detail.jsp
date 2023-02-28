@@ -28,8 +28,8 @@
 			<div>
 				<form action="./update" id="frm">
 					<input type="hidden" name="num" value="${dto.num}">
-					<button type="button" class="btn btn-primary">UPDATE</button>
-					<button type="button" class="btn btn-danger">DELETE</button>
+					<button type="button" class="btn btn-primary" id="update">UPDATE</button>
+					<button type="button" class="btn btn-danger" id="delete">DELETE</button>
 				</form>
 			</div>
 		</div>

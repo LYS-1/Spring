@@ -63,6 +63,10 @@
 		SELECT * FROM QNAFILES WHERE NUM=#{num}
 	</select>
 	
+	<select id="getBoardFileDetail" parameterType="BoardFileDTO" resultType="BoardFileDTO">
+		SELECT * FROM QNAFILES WHERE FILENUM=#{fileNum}
+	</select>
+	
 	<insert id="setBoardAdd" parameterType="QnaDTO">
 		<selectKey keyProperty="num" resultType="Long" order="BEFORE">
 			SELECT QNA_SEQ.NEXTVAL FROM DUAL

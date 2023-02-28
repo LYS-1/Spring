@@ -1,18 +1,17 @@
 package com.home.spring.board.qna;
 
-import java.io.File;
+
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.RequestMapping;
+
 import org.springframework.web.multipart.MultipartFile;
 
-import com.home.spring.board.BbsDAO;
+
 import com.home.spring.board.BbsDTO;
-import com.home.spring.board.BoardDAO;
 import com.home.spring.board.BoardDTO;
 import com.home.spring.board.BoardFileDTO;
 import com.home.spring.board.BoardService;
@@ -29,6 +28,12 @@ public class QnaService implements BoardService{
 	
 	
 	
+	@Override
+	public BoardFileDTO getBoardFileDetail(BoardFileDTO boardFileDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return qnaDAO.getBoardFileDetail(boardFileDTO);
+	}
+
 	@Override
 	public List<BbsDTO> getBoardList(Pagination pager) throws Exception {
 		// TODO Auto-generated method stub

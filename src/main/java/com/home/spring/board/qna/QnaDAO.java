@@ -14,13 +14,17 @@ import com.home.spring.util.Pagination;
 
 @Repository
 public class QnaDAO implements BoardDAO {
-	
-	
 
 	@Autowired
 	private SqlSession sqlSession;
 	
 	private final String NAMESPACE = "com.home.spring.board.qna.QnaDAO.";
+	
+	@Override
+	public BoardFileDTO getBoardFileDetail(BoardFileDTO boardFileDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(NAMESPACE + "getBoardFileDetail", boardFileDTO);
+	}
 	
 	@Override
 	public Long getTotalCount(Pagination pager) throws Exception {

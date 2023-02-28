@@ -14,11 +14,19 @@ import com.home.spring.util.Pagination;
 
 @Repository
 public class NoticeDAO implements BoardDAO {
+	
+
 	@Autowired
 	private SqlSession sqlSession;
 	
 	private final String NAMESPACE = "com.home.spring.board.notice.NoticeDAO.";
-
+	
+	@Override
+	public BoardFileDTO getBoardFileDetail(BoardFileDTO boardFileDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(NAMESPACE + "getBoardFileDetail", boardFileDTO);
+	}
+	
 	@Override
 	public int setBoardFileAdd(BoardFileDTO boardFileDTO) throws Exception {
 		// TODO Auto-generated method stub

@@ -15,8 +15,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.home.spring.board.BbsDTO;
-import com.home.spring.board.BbsService;
 import com.home.spring.board.BoardDTO;
+import com.home.spring.board.BoardFileDTO;
 import com.home.spring.board.BoardService;
 import com.home.spring.util.Pagination;
 
@@ -25,11 +25,11 @@ import com.home.spring.util.Pagination;
 public class NoticeController {
 	
 	@Autowired
-	private BoardService noticeService;
+	private NoticeService noticeService;
 	
 	@ModelAttribute("boardName")
 	public String getBoardName() {
-		return "NOTICE";
+		return "notice";
 	}
 	
 	@RequestMapping(value = "list", method=RequestMethod.GET)
@@ -75,6 +75,17 @@ public class NoticeController {
 		BoardDTO boardDTO = noticeService.getBoardDetail(noticeDTO);
 		mv.addObject("dto", boardDTO);
 		mv.setViewName("/board/detail");
+		
+		return mv;
+	}
+	@GetMapping(value="fileDown")
+	public ModelAndView getFileDown(BoardFileDTO boardFileDTO)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
+		boardFileDTO = noticeService.getBoardFileDetail(boardFileDTO);
+		
+		mv.addObject("boardFile", boardFileDTO);
+		mv.setViewName("fileDownView");
 		
 		return mv;
 	}
