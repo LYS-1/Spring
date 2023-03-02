@@ -46,14 +46,14 @@ public class QnaController {
 		return mv;
 	}
 	
-	@GetMapping(value="add")
+	@GetMapping("add")
 	public ModelAndView setBoardAdd() throws Exception{
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("/board/add");
 		return mv;
 	}
 	
-	@PostMapping(value="add")
+	@PostMapping("add")
 	public ModelAndView setBoardAdd(QnaDTO qnaDTO, MultipartFile []files, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
@@ -71,7 +71,7 @@ public class QnaController {
 		return mv;
 	}
 	
-	@GetMapping(value="detail")
+	@GetMapping("detail")
 	public ModelAndView getBoardDetail(QnaDTO qnaDTO) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
@@ -82,7 +82,7 @@ public class QnaController {
 		return mv;
 	}
 	
-	@GetMapping(value="reply")
+	@GetMapping("reply")
 	public ModelAndView setReplyAdd(BoardDTO qnaDTO) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
@@ -91,7 +91,7 @@ public class QnaController {
 		return mv;
 	}
 	
-	@PostMapping(value="reply")
+	@PostMapping("reply")
 	public ModelAndView setReplyAdd(QnaDTO qnaDTO) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
@@ -110,13 +110,13 @@ public class QnaController {
 		return mv;
 	}
 	
-	@PostMapping(value="delete")
+	@PostMapping("delete")
 	public ModelAndView setBoardDelete(BbsDTO bbsDTO, HttpSession session) throws Exception{
 		
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("/common/result");
+		mv.setViewName("common/result");
 		
-		System.out.println("if문 진입전");
+		System.out.println("delete진입");
 		
 		
 		int result = qnaService.setBoardDelete(bbsDTO, session);
@@ -133,7 +133,7 @@ public class QnaController {
 		
 		return mv;
 	}
-	@GetMapping(value="fileDown")
+	@GetMapping("fileDown")
 	public ModelAndView getFileDown(BoardFileDTO boardFileDTO)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
@@ -141,6 +141,17 @@ public class QnaController {
 		
 		mv.addObject("boardFile", boardFileDTO);
 		mv.setViewName("fileDownView");
+		
+		return mv;
+	}
+	@GetMapping("update")
+	public ModelAndView setBoardUpdate(BoardDTO boardDTO)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
+		boardDTO = qnaService.getBoardDetail(boardDTO);
+		
+		mv.addObject("dto" , boardDTO);
+		mv.setViewName("/board/update");
 		
 		return mv;
 	}

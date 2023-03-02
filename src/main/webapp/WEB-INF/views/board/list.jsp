@@ -124,7 +124,7 @@
 				  	</div>
 				</form>
 				<c:if test="${not empty member}">
-					<c:if test="${boardName eq 'notice' and member.roleDTO.roleName eq 'MANAGER'}">		
+					<c:if test="${boardName eq 'notice' and member.roleDTO.roleName eq 'ADMIN'}">		
 						<div class="">
 							<a href="./add" class="btn btn-primary float-end">글 작성</a>
 						</div>	
