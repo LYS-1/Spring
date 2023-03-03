@@ -60,9 +60,13 @@
 			  </button>
 			</div>
 		</div>
+		<div class="container-fluid col-md-3 offset-md-3 my-5" id="noticeList">
+			
+		</div>
 	</div>
-
+	
 	
 	<c:import url="./template/common_js.jsp"></c:import>
+	<script src="/resources/js/noticeTop5.js"></script>
 </body>
 </html>

@@ -33,7 +33,7 @@
     <servlet-name>appServlet</servlet-name>
     <url-pattern>/</url-pattern>
   </servlet-mapping>
-  <filter>
+  <!-- <filter>
     <display-name>TestFilter</display-name>
     <filter-name>TestFilter</filter-name>
     <filter-class>com.home.spring.filters.TestFilter</filter-class>
@@ -45,7 +45,7 @@
   <error-page>
 		<error-code>404</error-code>
 		<location>/WEB-INF/views/common/error_400.jsp</location>
-  </error-page>
+  </error-page> -->
   <!-- <filter>
     <display-name>CommonFilter</display-name>
     <filter-name>CommonFilter</filter-name>

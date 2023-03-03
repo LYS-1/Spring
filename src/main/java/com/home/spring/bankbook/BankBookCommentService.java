@@ -11,13 +11,14 @@ import org.springframework.web.multipart.MultipartFile;
 import com.home.spring.board.BbsDAO;
 import com.home.spring.board.BbsDTO;
 import com.home.spring.board.BbsService;
+import com.home.spring.member.MemberDTO;
 import com.home.spring.util.Pagination;
 
 @Service
 public class BankBookCommentService implements BbsService{
 	
 	@Autowired
-	private BbsDAO bankBookCommentDAO;
+	private BankBookCommentDAO bankBookCommentDAO;
 	//private BankBookCommentDAO bankBookCommentDAO;
 	
 	@Override
@@ -26,7 +27,9 @@ public class BankBookCommentService implements BbsService{
 		
 		pager.makeRow();
 		Long totalCount = bankBookCommentDAO.getTotalCount(pager);
+		
 		pager.makeBlock(totalCount);
+		
 		return bankBookCommentDAO.getBoardList(pager);
 	}
 
@@ -48,6 +51,8 @@ public class BankBookCommentService implements BbsService{
 		return 0;
 	}
 
-	
+	public int setCommentAdd(BankBookCommentDTO commentDTO)throws Exception{
+		return bankBookCommentDAO.setCommentAdd(commentDTO);
+	}
 	
 }

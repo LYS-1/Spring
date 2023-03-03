@@ -3,7 +3,7 @@ package com.home.spring.util;
 public class Pagination {
 	
 	private Long bookNumber;
-
+	
 	public Long getBookNumber() {
 		return bookNumber;
 	}

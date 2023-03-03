@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.home.spring.board.BbsDAO;
 import com.home.spring.board.BbsDTO;
+import com.home.spring.member.MemberDTO;
 import com.home.spring.util.Pagination;
 
 @Repository
@@ -29,7 +30,7 @@ public class BankBookCommentDAO implements BbsDAO{
 		// TODO Auto-generated method stub
 		return sqlSession.selectList(NAMESPACE + "getBoardList", pager);
 	}
-
+	
 	@Override
 	public int setBoardAdd(BbsDTO bbsDTO) throws Exception {
 		// TODO Auto-generated method stub
@@ -48,4 +49,7 @@ public class BankBookCommentDAO implements BbsDAO{
 		return 0;
 	}
 	
+	public int setCommentAdd(BankBookCommentDTO commentDTO)throws Exception{
+		return sqlSession.insert(NAMESPACE + "setCommentAdd", commentDTO);
+	}
 }

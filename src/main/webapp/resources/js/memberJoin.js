@@ -68,6 +68,33 @@ function check0(input, label, label2){
 
 inputId.addEventListener('focusout', function(){
     let value = inputId.value.length;
+    //중복검사
+    let xhttp = new XMLHttpRequest();
+
+    //url, method 정보
+    xhttp.open('post', './memberIdCheck');
+    //header
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    //요청 발생 post -> parameter 전송
+    xhttp.send('id=' + id.value);
+    //응답 처리
+    xhttp.addEventListener('readystatechange', function(){
+        if(this.readyState == 4 && this.status == 200){
+            if(this.responseText.trim() == 'true'){
+                idLabel.innerText = '사용 가능한 아이디 입니다.';
+                idL.classList.replace('redResult', 'blueResult')
+            }else{
+                idLabel.innerText = '중복된 아이디 입니다.';
+                idL.classList.replace('blueResult', 'redResult')
+            }
+            
+        }  
+        if(this.readyState == 4 && this.status != 200){
+            //error 발생
+        }
+    });
+
+
     if(value == 0){
         console.log(value);
         idLabel.innerText = 'id를 입력하세요.';
