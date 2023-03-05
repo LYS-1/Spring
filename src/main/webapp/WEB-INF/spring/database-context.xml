@@ -13,7 +13,7 @@
 	</bean>
 	
 	
-	<!-- Connection localhost -->
+	<!-- Connection 192.168.1.138 -->
 	<bean class = "org.springframework.jdbc.datasource.DriverManagerDataSource" id = "dataSource">
 		<property name = "username" value= "user01"></property><!-- 학원에선 ID PW 소문자 -->
 		<property name= "password" value= "user01"></property>

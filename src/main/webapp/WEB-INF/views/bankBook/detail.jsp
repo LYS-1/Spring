@@ -78,6 +78,6 @@
 	</div>
 	<c:import url="../template/common_js.jsp"></c:import>
 	<script src="/resources/js/bankBookReply.js"></script>
-	
+	<script type="/resources/js/paging.js"></script>
 </body>
 </html>
