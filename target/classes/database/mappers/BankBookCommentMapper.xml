@@ -43,4 +43,12 @@
  		INSERT INTO BANKBOOKCOMMENT 
  		VALUES(BANKBOOKCOMMENT_SEQ.NEXTVAL, #{bookNumber}, #{contents}, sysdate, #{writer})
  	</insert>
+ 	
+ 	<update id="setBoardDelete" parameterType="BbsDTO">
+ 		UPDATE BANKBOOKCOMMENT SET CONTENTS = '삭제된 댓글입니다.' WHERE NUM = #{num}
+ 	</update>
+ 	
+ 	<update id="setBoardUpdate" parameterType="BbsDTO">
+ 		UPDATE BANKBOOKCOMMENT SET CONTENTS = #{contents} WHERE NUM = #{num}
+ 	</update>
  </mapper>

@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 <c:import url="../template/common_css.jsp"></c:import>
 </head>
 <body>
@@ -33,14 +34,15 @@
 					</c:if>
 				</div>
 				<h3>상세 정보 : ${dto.bookDetail}</h3>
-					
-				<a href="./delete?bookNumber=${dto.bookNumber}">삭제</a>
-				<a href="./update?bookNumber=${dto.bookNumber}">수정</a>
+								
+				<a href="./delete?bookNumber=${dto.bookNumber}" class="btn btn-danger">삭제</a>
+				<a href="./update?bookNumber=${dto.bookNumber}" class="btn btn-primary">수정</a>
+							
 			</c:when>
 		</c:choose>
 		<a href = "./list">목록으로</a>
 		
-		<div class="my-5 mx-auto col-md-10" id="replyList">
+		<div class="my-5 mx-auto col-md-10" id="replyList" >
 			
 		</div>
 		
@@ -78,6 +80,6 @@
 	</div>
 	<c:import url="../template/common_js.jsp"></c:import>
 	<script src="/resources/js/bankBookReply.js"></script>
-	<script type="/resources/js/paging.js"></script>
+	
 </body>
 </html>

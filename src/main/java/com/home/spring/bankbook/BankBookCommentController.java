@@ -40,11 +40,13 @@ public class BankBookCommentController {
 	public ModelAndView setReplyAdd(BankBookCommentDTO commentDTO, HttpSession session)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
-		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		if(session.getAttribute("member") != null) {
+			MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+			commentDTO.setWriter(memberDTO.getId());
+		}
 		
 			
-		//commentDTO.setWriter(memberDTO.getId());
-		commentDTO.setWriter("testlsy");
+//		commentDTO.setWriter("testlsy");
 		
 		int result = bankBookCommentService.setCommentAdd(commentDTO);
 		
@@ -54,4 +56,36 @@ public class BankBookCommentController {
 		
 		return mv;
 	}
+	
+	@PostMapping("delete")
+	public ModelAndView setReplyDelete(BankBookCommentDTO commentDTO)throws Exception{
+		
+		ModelAndView mv = new ModelAndView();
+		
+		int result = bankBookCommentService.setBoardDelete(commentDTO, null);
+		
+		mv.addObject("result", result);
+		mv.setViewName("/common/ajaxResult");
+		
+		return mv;
+	}
+	
+	
+	
+	@PostMapping("update")
+	public ModelAndView setReplyUpdate(BankBookCommentDTO commentDTO)throws Exception{
+		
+		ModelAndView mv = new ModelAndView();
+		
+		int result = bankBookCommentService.setBoardUpdate(commentDTO);
+		
+		mv.addObject("result", result);
+		mv.setViewName("/common/ajaxResult");
+		
+		return mv;
+	}
+	
+	
+	
+	
 }
