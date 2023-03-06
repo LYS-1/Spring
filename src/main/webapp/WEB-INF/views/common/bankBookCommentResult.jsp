@@ -16,12 +16,12 @@
                             ${dto.writer}
                         </td>
                         <td id="table-contents-${dto.num}">
-                            ${dto.contents}
+                            <p id="contents${dto.num}">${dto.contents}</p>
                         </td>
                         <td>
                  	    	<c:if test="${member.id eq dto.writer}">
                            		<c:if test="${dto.contents ne '삭제된 댓글입니다.'}">
-	                           		<button class="btn btn-primary updateComment" id="UpdateComment-${dto.num}" data-btn-idx="${dto.num}">수정하기</button>
+	                           		<button class="btn btn-primary updateComment" id="UpdateComment-${dto.num}" data-btn-idx="${dto.num}" data-bs-toggle="modal" data-bs-target="#contentsModal">수정하기</button>
 								    <button class="btn btn-danger deleteComment" id="deleteComment" data-btn-idx="${dto.num}">삭제하기</button>
                                 </c:if>
 							</c:if>

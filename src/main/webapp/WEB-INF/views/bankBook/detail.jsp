@@ -50,6 +50,43 @@
 			<textarea class="form-control" id="replyContents" rows="3" name="contents"></textarea>
 			<button type="button" class="btn btn-primary" id="btnReply" data-book-bookNumber="${dto.bookNumber}">댓글 등록</button>
 		</div>
+		
+		<!-- update form modal -->
+		<!-- Button trigger modal -->
+
+		  
+		  <!-- Modal -->
+		<div class="modal fade" id="contentsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<div class="form-floating">
+							<textarea class="form-control" placeholder="Leave a comment here" id="contents"></textarea>
+							<label for="contents">Comments</label>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeModal">Cancel</button>
+						<button type="button" class="btn btn-primary" id="contentsConfirm">확인</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		<%-- <hr> --%>
 		<%-- <div class = "col-6">
 		<table class = "table table-hover">
