@@ -88,9 +88,11 @@ public class QnaService implements BoardService{
 		int result = qnaDAO.setBoardUpdate(bbsDTO);
 		
 		//qnafiles delete
-		for(Long fileNum : fileNums) {			
-			qnaDAO.setBoardFileDelete(fileNum);
-			//디스크 내에 파일 삭제
+		if(fileNums != null) {			
+			for(Long fileNum : fileNums) {			
+				qnaDAO.setBoardFileDelete(fileNum);
+				//디스크 내에 파일 삭제
+			}
 		}
 		//qnafiles insert
 		String realPath = session.getServletContext().getRealPath("resources/upload/qna");
