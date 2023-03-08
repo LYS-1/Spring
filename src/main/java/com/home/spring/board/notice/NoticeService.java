@@ -22,13 +22,15 @@ import com.home.spring.util.Pagination;
 @Service
 public class NoticeService implements BoardService{
 
+	
 	@Autowired
 	private NoticeDAO noticeDAO;
 	
 	@Autowired
 	private FileManager fileManager;
 	
-	
+
+
 	
 	@Override
 	public BoardFileDTO getBoardFileDetail(BoardFileDTO boardFileDTO) throws Exception {
@@ -79,7 +81,14 @@ public class NoticeService implements BoardService{
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
+	
+	@Override
+	public int setBoardUpdate(BbsDTO bbsDTO, MultipartFile[] multipartFile, HttpSession session, Long[] fileNums)
+			throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
 	@Override
 	public int setBoardDelete(BbsDTO bbsDTO, HttpSession session) throws Exception {
 		// TODO Auto-generated method stub

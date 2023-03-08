@@ -67,6 +67,8 @@
 		SELECT * FROM QNAFILES WHERE FILENUM=#{fileNum}
 	</select>
 	
+
+	
 	<insert id="setBoardAdd" parameterType="QnaDTO">
 		<selectKey keyProperty="num" resultType="Long" order="BEFORE">
 			SELECT QNA_SEQ.NEXTVAL FROM DUAL
@@ -90,8 +92,16 @@
 		WHERE REF = #{ref} AND STEP > #{step}
 	</update>
 	
+	<update id="setBoardUpdate" parameterType="BbsDTO">
+		UPDATE QNA SET TITLE = #{title}, CONTENTS = #{contents} WHERE NUM = #{num}
+	</update>
+	
 	<delete id="setBoardDelete" parameterType="BbsDTO">
 		DELETE QNA WHERE NUM=#{num}
+	</delete>
+	
+	<delete id="setBoardFileDelete" parameterType="Long">
+		DELETE QNAFILES WHERE FILENUM=#{fileNum}
 	</delete>
 	
 </mapper>

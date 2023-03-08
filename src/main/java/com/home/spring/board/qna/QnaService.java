@@ -20,14 +20,15 @@ import com.home.spring.util.Pagination;
 
 @Repository
 public class QnaService implements BoardService{
+	
+
 	@Autowired
 	private QnaDAO qnaDAO;
 	
 	@Autowired
 	private FileManager fileManager;
 	
-	
-	
+
 	@Override
 	public BoardFileDTO getBoardFileDetail(BoardFileDTO boardFileDTO) throws Exception {
 		// TODO Auto-generated method stub
@@ -68,7 +69,7 @@ public class QnaService implements BoardService{
 			boardFileDTO.setFileName(fileName);
 			boardFileDTO.setOriName(multipartFile.getOriginalFilename());
 			result = qnaDAO.setBoardFileAdd(boardFileDTO);
-			System.out.println(result);
+			
 		}
 		
 		return result;
@@ -79,7 +80,43 @@ public class QnaService implements BoardService{
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	
+	@Override
+	public int setBoardUpdate(BbsDTO bbsDTO, MultipartFile[] multipartFiles, HttpSession session, Long[] fileNums)
+			throws Exception {
+		// TODO Auto-generated method stub
+		int result = qnaDAO.setBoardUpdate(bbsDTO);
+		
+		//qnafiles delete
+		for(Long fileNum : fileNums) {			
+			qnaDAO.setBoardFileDelete(fileNum);
+			//디스크 내에 파일 삭제
+		}
+		//qnafiles insert
+		String realPath = session.getServletContext().getRealPath("resources/upload/qna");
+		
+		
+		for(MultipartFile multipartFile: multipartFiles) {
+			if(multipartFile.isEmpty()) {
+				
+				continue;
+			}
+			
+			String fileName = fileManager.saveFile(multipartFile, realPath);
+			
+			//db insert
+			BoardFileDTO boardFileDTO = new BoardFileDTO();
+			boardFileDTO.setNum(bbsDTO.getNum());
+			boardFileDTO.setFileName(fileName);
+			boardFileDTO.setOriName(multipartFile.getOriginalFilename());
+			result = qnaDAO.setBoardFileAdd(boardFileDTO);
+			
+		}
+		
+		return result;
+	}
 
+	
 	@Override
 	public int setBoardDelete(BbsDTO bbsDTO, HttpSession session) throws Exception {
 		// TODO Auto-generated method stub

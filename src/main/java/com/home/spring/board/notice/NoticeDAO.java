@@ -82,6 +82,11 @@ public class NoticeDAO implements BoardDAO {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne(NAMESPACE + "getTotalCount", pager);
 	}
+	@Override
+	public int setBoardFileDelete(Long fileNum) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.delete(NAMESPACE + "setBoardFileDelete", fileNum);
+	}
 	
 	
 }

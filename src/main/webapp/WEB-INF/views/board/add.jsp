@@ -56,7 +56,7 @@
 	<script src="/resources/js/filemanager.js"></script>
 	<script>
 		setMax(5);
-		setParam('files');
+		setParam('addFiles');
 		$('#contents').summernote({
 			//toolbar: []
 		});

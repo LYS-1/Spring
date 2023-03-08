@@ -21,13 +21,15 @@
 			<c:forEach items ="${dto.boardFileDTOs}" var="fileDTO">
 				<a href="./fileDown?fileNum=${fileDTO.fileNum}">${fileDTO.oriName}</a>
 			</c:forEach>
-			<c:if test="${boardName ne 'NOTICE'}">
-				<a href="./reply?num=${dto.num}" class="btn btn-primary">답글</a>			
-			</c:if>
+			
 			
 			<%-- <c:if test="${member.id == dto.writer}"> --%>			
-				<div>
+				<div class="my-5">
+					
 					<form action="./update" id="frm">
+						<c:if test="${boardName ne 'NOTICE'}">
+							<a href="./reply?num=${dto.num}" class="btn btn-primary">답글</a>			
+						</c:if>
 						<input type="hidden" name="num" value="${dto.num}">
 						<button id="update" type="submit" class="btn btn-primary">UPDATE</button>
 						<button id="delete" type="button" class="btn btn-danger">DELETE</button>
