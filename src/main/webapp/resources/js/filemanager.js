@@ -179,20 +179,58 @@ $('#fileList').on('click', '.cancelButton', function(e){
 
 //체크 시 => input 추가 해제 => input 삭제
 $('.deleteCheck').click(function(){
-    if($(this).prop('checked')){
-        let result = confirm('파일이 영구 삭제 됩니다.')
-        if(result){
-            disable --;
-        }else{
-            $(this).prop('checked', false);
-        }
+    let result = confirm('파일이 영구 삭제 됩니다.')
+    let ch = $(this);
+    if(result){
+        let fileNum = $(this).val();
+        $.ajax({
+            type:'POST',
+            url:'./boardFileDelete',
+            data: {
+                fileNum : fileNum
+            },
+            
+            success : function(response){
+                if(response.trim() > 0){
+                    alert('삭제 되었습니다.')
+                    //this=> ajax객체 자신
+                    ch.parent().parent().remove();
+                    disable --;
+                }else{
+                    alert('삭제 실패.<br> 관리자에게 문의하세요.')
+                }
+            },
+            error : function(response){
+
+            }
+        })
+        
+        //ajax db에서 삭제
+        // fetch(GET)
+        // fetch('URL?p=v', {
+        //     method:'GET'
+        // }).then((response)=>response.text)
+        // .then((res)=>{
+            
+        // })
+        // ajax(GET)
+        // $.get('url?p=v', (response)=>{
+        
+        // })
+
+        // fetch(POST)
+        // fetch('url',{
+        //     method:'POST',
+        //     headers:{'content-type':'??'},
+        //     body:"p=v"
+        // }).then((response)=>response.text)
+        // .then((res)=>{
+            
+        // })
+        // ajax(POST)
+        // $.post('url', {p:v}, function(res){})
+
     }else{
-        if(disable == max){
-            alert('마지막 첨부 파일란이 지워집니다.')
-            disable = max;
-            $('#div'+disable).remove();
-            return;
-        }
-        disable ++;
+        $(this).prop('checked', false);
     }
 })
