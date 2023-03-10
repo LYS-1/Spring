@@ -2,15 +2,32 @@ $('#btn').click(()=>{
     
     let productId = $('#productId').val();
     
-    $.get('https://dummyjson.com/products/'+productId, (response)=>{
-        console.log(response);
-        console.log(response.title);
+    $.ajax({
+        type:'GET',
+        url:'https://dummyjson.com/products/'+productId, //resttemplate
+        //"content-type : application/json"
+        success: function(response){
+            console.log(response);
+            console.log(typeof response);
+
+        }
     })
+
+    // $.get('https://dummyjson.com/products/'+productId, (response)=>{
+    //     console.log(response);
+    //     console.log('title',response.title);
+    //     alert(response);
+    //     let result = JSON.stringify(response);
+    //     console.log(result);
+    //     alert(result);
+    //     console.log(typeof result);
+
+    // })
     
 })
 
 $.get('https://dummyjson.com/products', (response)=>{
-    console.log(response.products.length);
+    console.log("length : ",response.products.length);
     //let result='';
     for(let item of response.products){
         let result = '<div class="card" style="width: 18rem;">'

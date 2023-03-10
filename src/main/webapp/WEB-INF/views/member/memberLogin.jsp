@@ -19,7 +19,7 @@
 		  <!-- Email input -->
 		  <div class="form-outline mb-4">
 		  	<label class="form-label" for="id">ID</label>
-		    <input type="text" id="id" class="form-control" name="id"/>
+		    <input type="text" id="id" class="form-control" name="id" value="${cookie.rememberID.value}"/>
 		    
 		  </div>
 		
@@ -35,8 +35,8 @@
 		    <div class="col d-flex justify-content-center">
 		      <!-- Checkbox -->
 		      <div class="form-check">
-		        <input class="form-check-input" type="checkbox" value="" id="form1Example3" checked />
-		        <label class="form-check-label" for="form1Example3"> Remember me </label>
+		        <input class="form-check-input" name="remember" type="checkbox" value="remember" id="remember" checked />
+		        <label class="form-check-label" for="remember"> Remember me </label>
 		      </div>
 		    </div>
 		

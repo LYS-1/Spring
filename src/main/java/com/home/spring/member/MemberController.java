@@ -2,7 +2,9 @@ package com.home.spring.member;
 
 
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -89,12 +91,40 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "memberLogin", method = RequestMethod.GET)
-	public void getMemberLogin() {
+	public ModelAndView getMemberLogin(HttpServletRequest request) {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("/member/memberLogin");
 		
+//		Cookie[] cookies = request.getCookies();
+//	
+//		for(Cookie cookie:cookies) {
+//			System.out.println("name : " +cookie.getName());
+//			System.out.println("value : " +cookie.getValue());
+//			System.out.println("domain : " +cookie.getDomain());
+//			System.out.println("path : " +cookie.getPath());
+//			System.out.println("------------");
+//			if(cookie.getName().equals("rememberID")){
+//				mv.addObject("rememberID", cookie.getValue());
+//				break;
+//			}
+//		}
+		return mv;
 	}
 	@RequestMapping(value = "memberLogin", method = RequestMethod.POST)
-	public ModelAndView getMemberLogin(MemberDTO memberDTO, HttpServletRequest request) throws Exception {
+	public ModelAndView getMemberLogin(MemberDTO memberDTO, HttpServletRequest request, String remember, HttpServletResponse response) throws Exception {
 		ModelAndView mv = new ModelAndView();
+		
+		if(remember != null && remember.equals("remember")) {
+			Cookie cookie = new Cookie("rememberID", memberDTO.getId());
+			cookie.setMaxAge(60*60*24*7);
+			
+			response.addCookie(cookie);
+		}else {
+			Cookie cookie = new Cookie("rememberID", "");
+			cookie.setMaxAge(0);
+			response.addCookie(cookie);
+		}
+		
 		memberDTO = memberService.getMemberLogin(memberDTO);
 		if(memberDTO != null) {
 			
